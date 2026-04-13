@@ -22,6 +22,15 @@ const { XMLParser } = require('fast-xml-parser');
 
 const ID_RE = /\[(\d{6})\]/;
 
+/** Извлечь минимальный индекс из описания диапазона вида "(1 - выведено; 2 - введено)" */
+function parseRangeMin(nameText) {
+    const m = nameText.match(/\(([^)]+)\)/);
+    if (!m) return 0;
+    const inner = m[1];
+    const nums = [...inner.matchAll(/(-?\d+)\s*[-–—]/g)].map(x => parseInt(x[1]));
+    return nums.length ? Math.min(...nums) : 0;
+}
+
 /** Нормализация значения для сравнения */
 function normalizeValue(val) {
     if (val === null || val === undefined) return '';
@@ -126,6 +135,7 @@ function parseXmlConfig(xmlPath, group = 1) {
                 name: s['@_Name'] || `[${nid}]`,
                 value: String(value),
                 unit: s['@_Unit'] || '',
+                ratio: s['@_Ratio'] || '',
                 source: 'Settings',
                 path: nextPath,
                 allValues: allVals,
@@ -259,6 +269,7 @@ function parseDocxTable(docxPath) {
                     id: nid, name: nameText,
                     value: valueText, unit: unitText,
                     primaryValues: isPrimary,
+                    rangeMin: parseRangeMin(nameText),
                 };
             }
         }
@@ -273,7 +284,7 @@ function parseDocxTable(docxPath) {
 
 function compare(wordParams, xmlParams) {
     const allIds = [...new Set([...Object.keys(wordParams), ...Object.keys(xmlParams)])].sort();
-    const differences = [], onlyWord = [], onlyXml = [];
+    const differences = [], onlyWord = [], onlyXml = [], tableEmpty = [];
 
     for (const nid of allIds) {
         const inWord = nid in wordParams;
@@ -287,13 +298,51 @@ function compare(wordParams, xmlParams) {
         } else {
             const wp = wordParams[nid], xp = xmlParams[nid];
             const wn = normalizeValue(wp.value);
-            const xn = normalizeValue(xp.value);
+
+            // Правка 2: Пустое значение в таблице → отдельная категория
+            if (!wn) {
+                const xn = normalizeValue(xp.value);
+                if (xn) {
+                    tableEmpty.push({
+                        id: nid, name: xp.name, path: xp.path || '',
+                        valueXml: xp.value, unitXml: xp.unit || '',
+                        allXmlValues: xp.allValues || {},
+                    });
+                }
+                continue;
+            }
+
+            // Правка 3: Селекторы — вычесть смещение rangeMin для сравнения
+            let wCompare = wn;
+            const enumMatch = wp.value.trim().match(/^(-?\d+(?:[.,]\d+)?)\s*[-–—]/);
+            const rangeMin = wp.rangeMin || 0;
+            if (enumMatch && rangeMin !== 0) {
+                const wNum = parseFloat(enumMatch[1].replace(',', '.'));
+                if (!isNaN(wNum)) {
+                    wCompare = normalizeValue(String(wNum - rangeMin));
+                }
+            }
+
+            // Правка 1: Первичные/вторичные — перевод значения конфига в первичные
+            let xValueForCompare = xp.value;
+            let xValuePrimary = null;
+            if (wp.primaryValues && xp.ratio && xp.ratio.trim()) {
+                const ratioF = parseFloat(xp.ratio);
+                const xNum = parseFloat(String(xp.value).replace(',', '.').replace(/\s/g, ''));
+                if (!isNaN(ratioF) && !isNaN(xNum) && ratioF > 0) {
+                    xValuePrimary = String(parseFloat((xNum * ratioF).toPrecision(10)));
+                    xValueForCompare = xValuePrimary;
+                }
+            }
+
+            const xn = normalizeValue(xValueForCompare);
             if (!wn && !xn) continue;
-            if (wn !== xn) {
+            if (wCompare !== xn) {
                 differences.push({
                     id: nid, name: xp.name, path: xp.path || '',
                     valueWord: wp.value, unitWord: wp.unit || '',
                     valueXml: xp.value,  unitXml: xp.unit  || '',
+                    valueXmlPrimary: xValuePrimary,
                     primaryValues: wp.primaryValues || false,
                     allXmlValues: xp.allValues || {},
                 });
@@ -301,7 +350,7 @@ function compare(wordParams, xmlParams) {
         }
     }
 
-    return { differences, onlyWord, onlyXml };
+    return { differences, onlyWord, onlyXml, tableEmpty };
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -336,10 +385,14 @@ function formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group) 
             add(`  ${d.name}`);
             if (d.path) add(`    Раздел: ${d.path}`);
             const wStr = d.valueWord + (d.unitWord ? ` ${d.unitWord}` : '');
-            const xStr = d.valueXml  + (d.unitXml  ? ` ${d.unitXml}`  : '');
+            const xRaw = d.valueXml  + (d.unitXml  ? ` ${d.unitXml}`  : '');
             add(`    Таблица:  ${wStr || '(пусто)'}`);
-            add(`    Конфиг:   ${xStr || '(пусто)'}`);
-            if (d.primaryValues) add(`    * Значение в таблице указано в первичных единицах`);
+            if (d.primaryValues && d.valueXmlPrimary) {
+                add(`    Конфиг:   ${xRaw || '(пусто)'}  →  ${d.valueXmlPrimary} ${d.unitXml} (первичные)`);
+            } else {
+                add(`    Конфиг:   ${xRaw || '(пусто)'}`);
+                if (d.primaryValues) add(`    * Таблица: первичные, коэффициент трансформации не определён`);
+            }
             const av = d.allXmlValues;
             const avKeys = Object.keys(av);
             if (avKeys.length > 1) {
@@ -379,6 +432,24 @@ function formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group) 
             add(`  ${p.name}`);
             if (p.path) add(`    Раздел: ${p.path}`);
             const vStr = p.value + (p.unit ? ` ${p.unit}` : '');
+            add(`    Значение в конфиге: ${vStr}`);
+            add();
+        }
+    } else {
+        add('  Нет таких параметров.');
+        add();
+    }
+
+    // 4. Не заполнено в таблице
+    const te = results.tableEmpty || [];
+    add(SEP);
+    add(`4. НЕ ЗАПОЛНЕНО В ТАБЛИЦЕ — ${te.length} позиций`);
+    add(SEP);
+    if (te.length) {
+        for (const p of te) {
+            add(`  ${p.name}`);
+            if (p.path) add(`    Раздел: ${p.path}`);
+            const vStr = p.valueXml + (p.unitXml ? ` ${p.unitXml}` : '');
             add(`    Значение в конфиге: ${vStr}`);
             add();
         }
@@ -455,8 +526,9 @@ async function run(wordPath, xmlPath, outputPath, group) {
     const d = results.differences.length;
     const w = results.onlyWord.length;
     const x = results.onlyXml.length;
+    const e = results.tableEmpty.length;
     console.log(`\nОтчёт сохранён: ${absOut}`);
-    console.log(`Итог: Различий: ${d}  |  Только в таблице: ${w}  |  Только в конфиге: ${x}`);
+    console.log(`Итог: Различий: ${d}  |  Только в таблице: ${w}  |  Только в конфиге: ${x}  |  Пусто в таблице: ${e}`);
 
     // На Windows — открыть отчёт в Блокноте автоматически
     if (process.platform === 'win32') {

@@ -371,10 +371,61 @@ function parseXlsxParams(xlsxPath) {
         }
     }
 
-    // ── Выбор листа: sheet2 (лист ТУ в таблице уставок) → sheet1 (SiemensPie) ─
-    const sheetEntry = zip.getEntry('xl/worksheets/sheet2.xml')
-                    || zip.getEntry('xl/worksheets/sheet1.xml');
-    if (!sheetEntry) throw new Error(`Не найден лист в файле ${xlsxPath}`);
+    // ── Выбор листа по имени из workbook.xml ─────────────────────────────────
+    // Приоритет: "Config" (вывод SiemensPie) > "ТУ" (таблица уставок) > первый лист
+    const sheetEntry = (() => {
+        try {
+            const wbEntry   = zip.getEntry('xl/workbook.xml');
+            const relsEntry = zip.getEntry('xl/_rels/workbook.xml.rels');
+            if (!wbEntry || !relsEntry) throw new Error('no workbook');
+
+            const metaParser = new XMLParser({
+                ignoreAttributes: false,
+                attributeNamePrefix: '@_',
+                parseTagValue: false,
+                parseAttributeValue: false,
+                isArray: tag => tag === 'sheet' || tag === 'Relationship',
+            });
+            const wbDoc   = metaParser.parse(wbEntry.getData().toString('utf8'));
+            const relsDoc = metaParser.parse(relsEntry.getData().toString('utf8'));
+
+            // rId → target path (относительно xl/)
+            const ridToFile = {};
+            const relsArr = relsDoc?.Relationships?.Relationship || [];
+            for (const rel of (Array.isArray(relsArr) ? relsArr : [relsArr])) {
+                const t = rel['@_Type'] || '';
+                if (t.includes('worksheet')) {
+                    ridToFile[rel['@_Id']] = 'xl/' + String(rel['@_Target']).replace(/^\//, '');
+                }
+            }
+
+            // Упорядоченный список листов
+            const wb = wbDoc?.workbook || wbDoc;
+            const sheetsArr = wb?.sheets?.sheet || [];
+            const sheets = Array.isArray(sheetsArr) ? sheetsArr : [sheetsArr];
+
+            // Найти по имени (Config → ТУ → первый)
+            const byName = {};
+            let firstEntry = null;
+            for (const sh of sheets) {
+                const name = (sh['@_name'] || '').toLowerCase().trim();
+                // r:id может прийти как @_r:id
+                const rid  = sh['@_r:id'] || sh['@_r_id'] || '';
+                const file = ridToFile[rid];
+                if (!file) continue;
+                const entry = zip.getEntry(file);
+                if (!entry) continue;
+                if (!firstEntry) firstEntry = entry;
+                byName[name] = entry;
+            }
+
+            return byName['config'] || byName['ту'] || firstEntry;
+        } catch (_) {
+            // Fallback если workbook не удалось прочитать
+            return zip.getEntry('xl/worksheets/sheet1.xml');
+        }
+    })();
+    if (!sheetEntry) throw new Error(`Не найден лист с уставками в файле ${xlsxPath}`);
 
     const sheetText = sheetEntry.getData().toString('utf8');
     const shParser = new XMLParser({

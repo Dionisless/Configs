@@ -331,9 +331,23 @@ function resolveXmlLabel(xp, expanders) {
     return vals[idx];
 }
 
+/**
+ * Вычислить относительное расхождение в процентах между двумя
+ * нормализованными строковыми значениями. Возвращает null если
+ * хотя бы одно значение не числовое.
+ */
+function calcPctDiff(wNorm, xNorm) {
+    const w = parseFloat(wNorm);
+    const x = parseFloat(xNorm);
+    if (isNaN(w) || isNaN(x)) return null;
+    const denom = Math.max(Math.abs(w), Math.abs(x));
+    if (denom === 0) return 0;
+    return Math.abs(w - x) / denom * 100;
+}
+
 function compare(wordParams, xmlParams, expanders) {
     const allIds = [...new Set([...Object.keys(wordParams), ...Object.keys(xmlParams)])].sort();
-    const differences = [], onlyWord = [], onlyXml = [], tableEmpty = [];
+    const differences = [], smallDiff = [], onlyWord = [], onlyXml = [], tableEmpty = [];
 
     for (const nid of allIds) {
         const inWord = nid in wordParams;
@@ -395,19 +409,27 @@ function compare(wordParams, xmlParams, expanders) {
                     const normLabel = normalizeEyo(normalizeValue(xmlLabel));
                     if (normalizeEyo(wn) === normLabel) continue; // совпадение по метке
                 }
-                differences.push({
+                const pct = calcPctDiff(wCompare, xn);
+                const entry = {
                     id: nid, name: xp.name, path: xp.path || '',
                     valueWord: wp.value, unitWord: wp.unit || '',
                     valueXml: xp.value,  unitXml: xp.unit  || '',
                     valueXmlPrimary: xValuePrimary,
                     primaryValues: wp.primaryValues || false,
                     allXmlValues: xp.allValues || {},
-                });
+                    pctDiff: pct,
+                };
+                // Числовое расхождение < 1% → отдельный раздел, не в основные различия
+                if (pct !== null && pct < 1) {
+                    smallDiff.push(entry);
+                } else {
+                    differences.push(entry);
+                }
             }
         }
     }
 
-    return { differences, onlyWord, onlyXml, tableEmpty };
+    return { differences, smallDiff, onlyWord, onlyXml, tableEmpty };
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -431,41 +453,60 @@ function formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group) 
     add(`Параметров в таблице:         ${Object.keys(wordParams).length}`);
     add(`Параметров в конфиге (всего): ${Object.keys(xmlParams).length}`);
     add();
+    const { differences: diffs, smallDiff: sdiffs = [],
+            onlyWord: ow, onlyXml: ox, tableEmpty: te = [] } = results;
+    add(`Итог: Различий значительных: ${diffs.length}  |  Расхождение <1%: ${sdiffs.length}  |  Только в таблице: ${ow.length}  |  Только в конфиге: ${ox.length}  |  Пусто в таблице: ${te.length}`);
+    add();
 
-    // 1. Различия
-    const diffs = results.differences;
+    /** Вывод одной строки различия (используется в разделах 1 и 2) */
+    function addDiffEntry(d) {
+        add(`  ${d.name}`);
+        if (d.path) add(`    Раздел: ${d.path}`);
+        const wStr = d.valueWord + (d.unitWord ? ` ${d.unitWord}` : '');
+        const xRaw = d.valueXml  + (d.unitXml  ? ` ${d.unitXml}`  : '');
+        add(`    Таблица:  ${wStr || '(пусто)'}`);
+        if (d.primaryValues && d.valueXmlPrimary) {
+            add(`    Конфиг:   ${xRaw || '(пусто)'}  →  ${d.valueXmlPrimary} ${d.unitXml} (первичные)`);
+        } else {
+            add(`    Конфиг:   ${xRaw || '(пусто)'}`);
+            if (d.primaryValues) add(`    * Таблица: первичные, коэффициент трансформации не определён`);
+        }
+        if (d.pctDiff !== null && d.pctDiff !== undefined) {
+            add(`    Расхождение: ${d.pctDiff.toFixed(2)}%`);
+        }
+        const av = d.allXmlValues;
+        const avKeys = Object.keys(av);
+        if (avKeys.length > 1) {
+            add(`    Конфиг (все группы): ${avKeys.map(g => `Гр${g}=${av[g]}`).join('  ')}`);
+        }
+        add();
+    }
+
+    // 1. Значительные различия (≥1% или нечисловые)
     add(SEP);
     add(`1. РАЗЛИЧИЯ ЗНАЧЕНИЙ — ${diffs.length} позиций`);
     add(SEP);
     if (diffs.length) {
-        for (const d of diffs) {
-            add(`  ${d.name}`);
-            if (d.path) add(`    Раздел: ${d.path}`);
-            const wStr = d.valueWord + (d.unitWord ? ` ${d.unitWord}` : '');
-            const xRaw = d.valueXml  + (d.unitXml  ? ` ${d.unitXml}`  : '');
-            add(`    Таблица:  ${wStr || '(пусто)'}`);
-            if (d.primaryValues && d.valueXmlPrimary) {
-                add(`    Конфиг:   ${xRaw || '(пусто)'}  →  ${d.valueXmlPrimary} ${d.unitXml} (первичные)`);
-            } else {
-                add(`    Конфиг:   ${xRaw || '(пусто)'}`);
-                if (d.primaryValues) add(`    * Таблица: первичные, коэффициент трансформации не определён`);
-            }
-            const av = d.allXmlValues;
-            const avKeys = Object.keys(av);
-            if (avKeys.length > 1) {
-                add(`    Конфиг (все группы): ${avKeys.map(g => `Гр${g}=${av[g]}`).join('  ')}`);
-            }
-            add();
-        }
+        for (const d of diffs) addDiffEntry(d);
     } else {
         add('  Различий нет.');
         add();
     }
 
-    // 2. Только в таблице
-    const ow = results.onlyWord;
+    // 2. Малые расхождения (<1%)
     add(SEP);
-    add(`2. ЕСТЬ В ТАБЛИЦЕ, НЕТ В КОНФИГЕ — ${ow.length} позиций`);
+    add(`2. РАСХОЖДЕНИЕ МЕНЕЕ 1% — ${sdiffs.length} позиций`);
+    add(SEP);
+    if (sdiffs.length) {
+        for (const d of sdiffs) addDiffEntry(d);
+    } else {
+        add('  Нет таких параметров.');
+        add();
+    }
+
+    // 3. Только в таблице
+    add(SEP);
+    add(`3. ЕСТЬ В ТАБЛИЦЕ, НЕТ В КОНФИГЕ — ${ow.length} позиций`);
     add(SEP);
     if (ow.length) {
         for (const p of ow) {
@@ -479,10 +520,9 @@ function formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group) 
         add();
     }
 
-    // 3. Только в конфиге
-    const ox = results.onlyXml;
+    // 4. Только в конфиге
     add(SEP);
-    add(`3. ЕСТЬ В КОНФИГЕ (со значением), НЕТ В ТАБЛИЦЕ — ${ox.length} позиций`);
+    add(`4. ЕСТЬ В КОНФИГЕ (со значением), НЕТ В ТАБЛИЦЕ — ${ox.length} позиций`);
     add(SEP);
     if (ox.length) {
         for (const p of ox) {
@@ -497,10 +537,9 @@ function formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group) 
         add();
     }
 
-    // 4. Не заполнено в таблице
-    const te = results.tableEmpty || [];
+    // 5. Не заполнено в таблице
     add(SEP);
-    add(`4. НЕ ЗАПОЛНЕНО В ТАБЛИЦЕ — ${te.length} позиций`);
+    add(`5. НЕ ЗАПОЛНЕНО В ТАБЛИЦЕ — ${te.length} позиций`);
     add(SEP);
     if (te.length) {
         for (const p of te) {
@@ -581,11 +620,12 @@ async function run(wordPath, xmlPath, outputPath, group) {
     fs.writeFileSync(absOut, '\uFEFF' + report, 'utf8');
 
     const d = results.differences.length;
+    const s = (results.smallDiff || []).length;
     const w = results.onlyWord.length;
     const x = results.onlyXml.length;
     const e = results.tableEmpty.length;
     console.log(`\nОтчёт сохранён: ${absOut}`);
-    console.log(`Итог: Различий: ${d}  |  Только в таблице: ${w}  |  Только в конфиге: ${x}  |  Пусто в таблице: ${e}`);
+    console.log(`Итог: Различий: ${d}  |  <1%: ${s}  |  Только в таблице: ${w}  |  Только в конфиге: ${x}  |  Пусто в таблице: ${e}`);
 
     // На Windows — открыть отчёт в Блокноте автоматически
     if (process.platform === 'win32') {

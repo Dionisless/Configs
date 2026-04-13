@@ -31,11 +31,18 @@ function parseRangeMin(nameText) {
     return nums.length ? Math.min(...nums) : 0;
 }
 
+/** Нормализация ё → е для устойчивого сравнения */
+function normalizeEyo(s) {
+    return s.replace(/ё/g, 'е');
+}
+
 /** Нормализация значения для сравнения */
 function normalizeValue(val) {
     if (val === null || val === undefined) return '';
     let s = String(val).trim().replace(/[\n\r\t]+/g, ' ').replace(/\s+/g, ' ').trim();
     if (!s) return '';
+    // "-", "–", "—" и "не используется" приравниваются к пустому
+    if (/^[-–—]+$/.test(s) || /^не\s+используется$/i.test(s)) return '';
     // "N - описание" → берём только N
     const enumM = s.match(/^(-?\d+(?:[.,]\d+)?)\s*[-–—]\s*\S/);
     if (enumM) s = enumM[1];
@@ -130,12 +137,22 @@ function parseXmlConfig(xmlPath, group = 1) {
             const value = s[`@_Value${group}`] !== undefined
                 ? s[`@_Value${group}`]
                 : (s['@_Value1'] !== undefined ? s['@_Value1'] : '');
+            // Inline список возможных значений <PossibleValues><Item Value="..."/></PossibleValues>
+            let possibleValues = [];
+            if (s.PossibleValues) {
+                const pvItems = s.PossibleValues.Item
+                    ? (Array.isArray(s.PossibleValues.Item) ? s.PossibleValues.Item : [s.PossibleValues.Item])
+                    : [];
+                possibleValues = pvItems.map(it => String(it['@_Value'] || ''));
+            }
             params[nid] = {
                 id: nid, fullId,
                 name: s['@_Name'] || `[${nid}]`,
                 value: String(value),
                 unit: s['@_Unit'] || '',
                 ratio: s['@_Ratio'] || '',
+                expander: s['@_PossibleValuesExpander'] || '',
+                possibleValues,
                 source: 'Settings',
                 path: nextPath,
                 allValues: allVals,
@@ -158,7 +175,24 @@ function parseXmlConfig(xmlPath, group = 1) {
         for (const n of topNodes) collectSettings(n, '');
     }
 
-    return params;
+    // ── Expanders (именованные списки возможных значений) ─────────────────────
+    const expanders = {};
+    const expandersNode = root.Expanders;
+    if (expandersNode) {
+        const expList = Array.isArray(expandersNode.Expander)
+            ? expandersNode.Expander
+            : (expandersNode.Expander ? [expandersNode.Expander] : []);
+        for (const exp of expList) {
+            if (!exp) continue;
+            const name = exp['@_Name'] || '';
+            const items = exp.Item
+                ? (Array.isArray(exp.Item) ? exp.Item : [exp.Item])
+                : [];
+            expanders[name] = items.map(it => String(it['@_Value'] || ''));
+        }
+    }
+
+    return { params, expanders };
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -282,7 +316,22 @@ function parseDocxTable(docxPath) {
 // Сравнение
 // ─────────────────────────────────────────────────────────────────────────────
 
-function compare(wordParams, xmlParams) {
+/**
+ * Получить текстовую метку значения-селектора по индексу из конфига.
+ * Пробует сначала inline PossibleValues, затем именованный Expander.
+ */
+function resolveXmlLabel(xp, expanders) {
+    let vals = xp.possibleValues || [];
+    if (vals.length === 0 && xp.expander && expanders[xp.expander]) {
+        vals = expanders[xp.expander];
+    }
+    if (vals.length === 0) return null;
+    const idx = parseInt(xp.value);
+    if (isNaN(idx) || idx < 0 || idx >= vals.length) return null;
+    return vals[idx];
+}
+
+function compare(wordParams, xmlParams, expanders) {
     const allIds = [...new Set([...Object.keys(wordParams), ...Object.keys(xmlParams)])].sort();
     const differences = [], onlyWord = [], onlyXml = [], tableEmpty = [];
 
@@ -330,7 +379,8 @@ function compare(wordParams, xmlParams) {
                 const ratioF = parseFloat(xp.ratio);
                 const xNum = parseFloat(String(xp.value).replace(',', '.').replace(/\s/g, ''));
                 if (!isNaN(ratioF) && !isNaN(xNum) && ratioF > 0) {
-                    xValuePrimary = String(parseFloat((xNum * ratioF).toPrecision(10)));
+                    // toFixed(3) исключает ошибки округления на 10-тысячных
+                    xValuePrimary = String(parseFloat((xNum * ratioF).toFixed(3)));
                     xValueForCompare = xValuePrimary;
                 }
             }
@@ -338,6 +388,13 @@ function compare(wordParams, xmlParams) {
             const xn = normalizeValue(xValueForCompare);
             if (!wn && !xn) continue;
             if (wCompare !== xn) {
+                // Правка 3 (резервный путь): сопоставление через PossibleValues / Expander.
+                // Работает когда таблица содержит текстовую метку ("вперёд"), а конфиг — индекс ("0").
+                const xmlLabel = resolveXmlLabel(xp, expanders || {});
+                if (xmlLabel !== null) {
+                    const normLabel = normalizeEyo(normalizeValue(xmlLabel));
+                    if (normalizeEyo(wn) === normLabel) continue; // совпадение по метке
+                }
                 differences.push({
                     id: nid, name: xp.name, path: xp.path || '',
                     valueWord: wp.value, unitWord: wp.unit || '',
@@ -507,11 +564,11 @@ async function run(wordPath, xmlPath, outputPath, group) {
     console.log(`  Найдено параметров: ${Object.keys(wordParams).length}`);
 
     console.log('Чтение конфигурации ...');
-    const xmlParams = parseXmlConfig(absXml, group);
+    const { params: xmlParams, expanders } = parseXmlConfig(absXml, group);
     console.log(`  Найдено параметров: ${Object.keys(xmlParams).length}`);
 
     console.log('Сравнение ...');
-    const results = compare(wordParams, xmlParams);
+    const results = compare(wordParams, xmlParams, expanders);
     const report  = formatReport(results, absWord, absXml, wordParams, xmlParams, group);
 
     // Имя выходного файла — рядом с таблицей, только ASCII в имени

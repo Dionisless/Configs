@@ -397,34 +397,75 @@ function formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group) 
 // Главная функция
 // ─────────────────────────────────────────────────────────────────────────────
 
+/** Записать ошибку в лог-файл в текущей рабочей папке */
+function writeErrorLog(err) {
+    try {
+        const logPath = path.join(process.cwd(), 'compare_tool_errors.log');
+        const msg = `[${new Date().toISOString()}]\n${err && err.stack ? err.stack : err}\n\n`;
+        fs.appendFileSync(logPath, msg, 'utf8');
+        console.error(`Лог ошибок: ${logPath}`);
+    } catch (_) { /* ignore */ }
+}
+
+/** Зависающий процесс — нажмите Enter */
+async function pressEnterToExit() {
+    const rl2 = readline.createInterface({ input: process.stdin, output: process.stdout });
+    await new Promise(res => rl2.question('\nНажмите Enter для выхода...', res));
+    rl2.close();
+}
+
+/** Убрать кавычки и лишние пробелы из пути введённого пользователем */
+function cleanPath(p) {
+    return p.trim().replace(/^["']|["']$/g, '').trim();
+}
+
 async function run(wordPath, xmlPath, outputPath, group) {
-    console.log(`Чтение таблицы уставок: ${wordPath} ...`);
-    const wordParams = parseDocxTable(wordPath);
+    // Привести к абсолютным путям
+    const absWord = path.resolve(wordPath);
+    const absXml  = path.resolve(xmlPath);
+
+    if (!fs.existsSync(absWord)) throw new Error(`Файл не найден: ${absWord}`);
+    if (!fs.existsSync(absXml))  throw new Error(`Файл не найден: ${absXml}`);
+
+    console.log(`Таблица уставок:   ${absWord}`);
+    console.log(`Файл конфигурации: ${absXml}`);
+    console.log();
+
+    console.log('Чтение таблицы уставок ...');
+    const wordParams = parseDocxTable(absWord);
     console.log(`  Найдено параметров: ${Object.keys(wordParams).length}`);
 
-    console.log(`Чтение конфигурации:   ${xmlPath} ...`);
-    const xmlParams = parseXmlConfig(xmlPath, group);
+    console.log('Чтение конфигурации ...');
+    const xmlParams = parseXmlConfig(absXml, group);
     console.log(`  Найдено параметров: ${Object.keys(xmlParams).length}`);
 
     console.log('Сравнение ...');
     const results = compare(wordParams, xmlParams);
-    const report  = formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group);
+    const report  = formatReport(results, absWord, absXml, wordParams, xmlParams, group);
 
-    const out = outputPath || path.join(
-        path.dirname(wordPath),
-        'отчет_сравнения_' + new Date().toISOString().slice(0, 10) + '.txt'
-    );
+    // Имя выходного файла — рядом с таблицей, только ASCII в имени
+    const date = new Date().toISOString().slice(0, 10);
+    const absOut = outputPath
+        ? path.resolve(outputPath)
+        : path.join(path.dirname(absWord), `report_${date}.txt`);
 
     // Записать с BOM для корректного отображения в Блокноте Windows
-    fs.writeFileSync(out, '\uFEFF' + report, 'utf8');
+    fs.writeFileSync(absOut, '\uFEFF' + report, 'utf8');
 
-    console.log(`\nОтчёт сохранён: ${out}`);
     const d = results.differences.length;
     const w = results.onlyWord.length;
     const x = results.onlyXml.length;
+    console.log(`\nОтчёт сохранён: ${absOut}`);
     console.log(`Итог: Различий: ${d}  |  Только в таблице: ${w}  |  Только в конфиге: ${x}`);
 
-    return out;
+    // На Windows — открыть отчёт в Блокноте автоматически
+    if (process.platform === 'win32') {
+        try {
+            require('child_process').spawn('notepad.exe', [absOut], { detached: true, stdio: 'ignore' }).unref();
+        } catch (_) { /* ignore if notepad not available */ }
+    }
+
+    return absOut;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -449,26 +490,41 @@ async function interactiveMode() {
     const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
     const ask = (q) => new Promise(res => rl.question(q, res));
 
-    console.log('='.repeat(60));
-    console.log(' Сравнение таблицы уставок и файла конфигурации');
-    console.log('='.repeat(60));
+    console.log('='.repeat(62));
+    console.log('  Сравнение таблицы уставок и файла конфигурации');
+    console.log('='.repeat(62));
+    console.log(`  Рабочая папка: ${process.cwd()}`);
+    console.log('='.repeat(62));
+    console.log();
+    console.log('Введите пути к файлам (можно перетащить файл в окно консоли).');
     console.log();
 
-    const word   = (await ask('Путь к таблице уставок (.docx): ')).trim();
-    const xml    = (await ask('Путь к файлу конфигурации (.xml): ')).trim();
+    const word   = cleanPath(await ask('Таблица уставок (.docx): '));
+    const xml    = cleanPath(await ask('Файл конфигурации (.xml): '));
     const grpStr = (await ask('Группа уставок (1-4, Enter = 1): ')).trim();
     const group  = parseInt(grpStr) || 1;
-    const output = (await ask('Файл отчёта (Enter = авто): ')).trim() || null;
     rl.close();
 
     console.log();
     try {
-        await run(word, xml, output, group);
+        await run(word, xml, null, group);
     } catch (e) {
-        console.error('ОШИБКА:', e.message);
-        process.exitCode = 1;
+        console.error('\nОШИБКА:', e.message);
+        writeErrorLog(e);
     }
+    await pressEnterToExit();
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Точка входа + перехват необработанных ошибок
+// ─────────────────────────────────────────────────────────────────────────────
+
+process.on('uncaughtException', async (err) => {
+    console.error('\nНЕОЖИДАННАЯ ОШИБКА:', err.message);
+    writeErrorLog(err);
+    await pressEnterToExit().catch(() => {});
+    process.exit(1);
+});
 
 (async () => {
     const args = parseArgs(process.argv.slice(2));
@@ -476,8 +532,9 @@ async function interactiveMode() {
         try {
             await run(args.word, args.xml, args.output, args.group);
         } catch (e) {
-            console.error('ОШИБКА:', e.message);
-            process.exitCode = 1;
+            console.error('\nОШИБКА:', e.message);
+            writeErrorLog(e);
+            process.exit(1);
         }
     } else {
         await interactiveMode();

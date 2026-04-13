@@ -6,7 +6,8 @@
  *   compare_tool.exe <таблица.docx> <конфиг.xml> [-o отчёт.txt] [--group N]
  *
  * Режим Siemens:
- *   compare_tool.exe <таблица.xlsx> <конфиг_SiemensPie.xlsx> [-o отчёт.txt]
+ *   compare_tool.exe <таблица.xlsx> <конфиг.xml> [-o отчёт.txt]
+ *   (SiemensPie запускается автоматически; .xrio-файл ищется рядом с .xml по тому же имени)
  *
  *   compare_tool.exe          (интерактивный режим — запросит пути файлов)
  */
@@ -16,9 +17,15 @@
 const fs   = require('fs');
 const path = require('path');
 const readline = require('readline');
+const { spawnSync } = require('child_process');
 
 const AdmZip = require('adm-zip');
 const { XMLParser } = require('fast-xml-parser');
+
+// Папка SiemensPie: в pkg-режиме — рядом с .exe, в dev-режиме — рядом со скриптом
+const SIEMENSPIE_DIR = typeof process.pkg !== 'undefined'
+    ? path.join(path.dirname(process.execPath), 'SiemensPie')
+    : path.join(__dirname, 'SiemensPie');
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Утилиты
@@ -584,7 +591,7 @@ function formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group, 
     if (isSiemens) {
         add(`Тип терминала:        Siemens`);
         add(`Таблица уставок:      ${wordPath}`);
-        add(`Конфигурация:         ${xmlPath}`);
+        add(`Вывод SiemensPie:     ${xmlPath}`);
     } else {
         add(`Таблица уставок:      ${wordPath}`);
         add(`Файл конфигурации:    ${xmlPath}`);
@@ -783,16 +790,57 @@ async function run(wordPath, xmlPath, outputPath, group) {
     return absOut;
 }
 
-/** Режим Siemens: таблица уставок .xlsx vs вывод SiemensPie .xlsx */
-async function runSiemens(tablePath, configPath, outputPath) {
-    const absTable  = path.resolve(tablePath);
-    const absConfig = path.resolve(configPath);
+/**
+ * Запустить SiemensPie (sp.exe) и вернуть путь к сгенерированному xlsx.
+ * sp.exe + python37.dll + config.json должны лежать в папке SiemensPie/
+ * рядом с compare_tool.exe (или рядом со скриптом в dev-режиме).
+ */
+function invokeSiemensPie(xmlPath, xrioPath) {
+    const spExe = path.join(SIEMENSPIE_DIR, 'sp.exe');
+    if (!fs.existsSync(spExe)) {
+        throw new Error(
+            `sp.exe не найден: ${spExe}\n` +
+            `Убедитесь, что папка SiemensPie/ находится рядом с compare_tool.exe`
+        );
+    }
+    const spArgs = xrioPath ? [xmlPath, xrioPath] : [xmlPath];
+    console.log(`Запуск SiemensPie: ${path.basename(xmlPath)}${xrioPath ? ' + ' + path.basename(xrioPath) : ''} ...`);
+    // cwd = папка SiemensPie, чтобы python37.dll и config.json были рядом с sp.exe
+    const result = spawnSync(spExe, spArgs, { cwd: SIEMENSPIE_DIR, timeout: 60000 });
+    if (result.stdout && result.stdout.length) process.stdout.write(result.stdout);
+    if (result.stderr && result.stderr.length) process.stderr.write(result.stderr);
+    if (result.error) throw result.error;
+    if (result.status !== 0) throw new Error(`SiemensPie завершился с кодом ${result.status}`);
+    // sp.exe создаёт xlsx рядом с xml-файлом, с тем же именем
+    const outXlsx = path.join(
+        path.dirname(xmlPath),
+        path.basename(xmlPath, path.extname(xmlPath)) + '.xlsx'
+    );
+    if (!fs.existsSync(outXlsx)) throw new Error(`SiemensPie не создал файл: ${outXlsx}`);
+    return outXlsx;
+}
 
-    if (!fs.existsSync(absTable))  throw new Error(`Файл не найден: ${absTable}`);
-    if (!fs.existsSync(absConfig)) throw new Error(`Файл не найден: ${absConfig}`);
+/** Режим Siemens: таблица уставок .xlsx + конфиг .xml → запускает SiemensPie, затем сравнивает */
+async function runSiemens(tablePath, xmlPath, outputPath) {
+    const absTable = path.resolve(tablePath);
+    const absXml   = path.resolve(xmlPath);
 
-    console.log(`Таблица уставок:           ${absTable}`);
-    console.log(`Конфигурация (SiemensPie): ${absConfig}`);
+    if (!fs.existsSync(absTable)) throw new Error(`Файл не найден: ${absTable}`);
+    if (!fs.existsSync(absXml))   throw new Error(`Файл не найден: ${absXml}`);
+
+    // Найти .xrio рядом с xml (то же имя, другое расширение)
+    const xrioCandidate = absXml.replace(/\.xml$/i, '.xrio');
+    const absXrio = fs.existsSync(xrioCandidate) ? xrioCandidate : null;
+    if (!absXrio) console.warn(`  Предупреждение: .xrio-файл не найден рядом с ${path.basename(absXml)}, SiemensPie запустится без него.`);
+
+    console.log(`Таблица уставок: ${absTable}`);
+    console.log(`Конфиг XML:      ${absXml}`);
+    if (absXrio) console.log(`Конфиг XRio:     ${absXrio}`);
+    console.log();
+
+    // Запустить SiemensPie → получить xlsx с уставками из конфига
+    const absConfig = invokeSiemensPie(absXml, absXrio);
+    console.log(`  Вывод SiemensPie: ${absConfig}`);
     console.log();
 
     console.log('Чтение таблицы уставок ...');
@@ -843,18 +891,22 @@ async function interactiveMode() {
     console.log('Введите пути к файлам (можно перетащить файл в окно консоли).');
     console.log();
 
-    const modeStr = (await ask('Тип терминала: 1 = БЭ2704 (docx + xml), 2 = Siemens (xlsx + xlsx) [Enter = 1]: ')).trim();
+    const modeStr = (await ask('Тип терминала: 1 = БЭ2704 (docx + xml), 2 = Siemens (xlsx + xml) [Enter = 1]: ')).trim();
     const isSiemens = modeStr === '2';
     console.log();
 
     let absOut;
     try {
         if (isSiemens) {
-            const table  = cleanPath(await ask('Таблица уставок (.xlsx): '));
-            const config = cleanPath(await ask('Конфигурация SiemensPie (.xlsx): '));
+            const table = cleanPath(await ask('Таблица уставок (.xlsx): '));
+            const xml   = cleanPath(await ask('Конфигурационный файл (.xml или .xrio): '));
             rl.close();
             console.log();
-            absOut = await runSiemens(table, config, null);
+            // нормализуем: если пользователь передал .xrio — находим xml
+            const xmlNorm = /\.xrio$/i.test(xml)
+                ? xml.replace(/\.xrio$/i, '.xml')
+                : xml;
+            absOut = await runSiemens(table, xmlNorm, null);
         } else {
             const word   = cleanPath(await ask('Таблица уставок (.docx): '));
             const xml    = cleanPath(await ask('Файл конфигурации (.xml): '));
@@ -886,10 +938,14 @@ process.on('uncaughtException', async (err) => {
     const args = parseArgs(process.argv.slice(2));
     if (args.word && args.xml) {
         try {
-            const isSiemens = args.word.toLowerCase().endsWith('.xlsx')
-                           && args.xml.toLowerCase().endsWith('.xlsx');
+            const w = args.word.toLowerCase(), x = args.xml.toLowerCase();
+            // Siemens: таблица.xlsx + конфиг.xml (или .xrio)
+            const isSiemens = w.endsWith('.xlsx') && (x.endsWith('.xml') || x.endsWith('.xrio'));
             if (isSiemens) {
-                await runSiemens(args.word, args.xml, args.output);
+                const xmlNorm = x.endsWith('.xrio')
+                    ? args.xml.replace(/\.xrio$/i, '.xml')
+                    : args.xml;
+                await runSiemens(args.word, xmlNorm, args.output);
             } else {
                 await run(args.word, args.xml, args.output, args.group);
             }

@@ -1,0 +1,23 @@
+{
+  "name": "compare-tool",
+  "version": "1.0.0",
+  "description": "Сравнение таблицы уставок (Word) и файла конфигурации (XML)",
+  "main": "compare_tool.js",
+  "bin": "compare_tool.js",
+  "scripts": {
+    "build": "pkg compare_tool.js --target node18-win-x64 --output compare_tool.exe"
+  },
+  "pkg": {
+    "targets": ["node18-win-x64"],
+    "outputPath": "."
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:37774/git/Dionisless/Configs"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "adm-zip": "^0.5.17",
+    "fast-xml-parser": "^5.5.11"
+  }
+}

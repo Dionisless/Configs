@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 /**
- * Инструмент сравнения таблицы уставок (Word .docx) и файла конфигурации (XML).
+ * Инструмент сравнения таблицы уставок и файла конфигурации.
  *
- * Использование:
+ * Режим БЭ2704 (Nari):
  *   compare_tool.exe <таблица.docx> <конфиг.xml> [-o отчёт.txt] [--group N]
+ *
+ * Режим Siemens:
+ *   compare_tool.exe <таблица.xlsx> <конфиг_SiemensPie.xlsx> [-o отчёт.txt]
+ *
  *   compare_tool.exe          (интерактивный режим — запросит пути файлов)
  */
 
@@ -21,6 +25,8 @@ const { XMLParser } = require('fast-xml-parser');
 // ─────────────────────────────────────────────────────────────────────────────
 
 const ID_RE = /\[(\d{6})\]/;
+/** Адрес параметра Siemens: 4 hex-цифры (+ опциональный буквенный суффикс) или 0x... */
+const SIEMENS_DADR_RE = /^([0-9A-Fa-f]{4}[A-Za-z]?|0x[0-9A-Fa-f]+)$/;
 
 /** Извлечь минимальный индекс из описания диапазона вида "(1 - выведено; 2 - введено)" */
 function parseRangeMin(nameText) {
@@ -41,8 +47,8 @@ function normalizeValue(val) {
     if (val === null || val === undefined) return '';
     let s = String(val).trim().replace(/[\n\r\t]+/g, ' ').replace(/\s+/g, ' ').trim();
     if (!s) return '';
-    // "-", "–", "—" и "не используется" приравниваются к пустому
-    if (/^[-–—]+$/.test(s) || /^не\s+используется$/i.test(s)) return '';
+    // "-", "–", "—", "не используется" и строки-заметки (заканчиваются на ":") = пустое
+    if (/^[-–—]+$/.test(s) || /^не\s+используется$/i.test(s) || /:\s*$/.test(s)) return '';
     // "N - описание" → берём только N
     const enumM = s.match(/^(-?\d+(?:[.,]\d+)?)\s*[-–—]\s*\S/);
     if (enumM) s = enumM[1];
@@ -313,6 +319,134 @@ function parseDocxTable(docxPath) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Парсинг xlsx (таблица уставок Siemens / вывод SiemensPie)
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Прочитать таблицу параметров из xlsx-файла.
+ * Ожидаемый формат (SiemensPie / таблица уставок Siemens):
+ *   A = DAdr, B = короткое имя, C = диапазон/варианты, D = значение, H = комментарий
+ * Строки без DAdr в колонке A — заголовки разделов.
+ */
+function parseXlsxParams(xlsxPath) {
+    const zip = new AdmZip(xlsxPath);
+
+    // ── Shared strings ────────────────────────────────────────────────────────
+    const strings = [];
+    const ssEntry = zip.getEntry('xl/sharedStrings.xml');
+    if (ssEntry) {
+        const ssText = ssEntry.getData().toString('utf8');
+        const ssParser = new XMLParser({
+            ignoreAttributes: false,
+            attributeNamePrefix: '@_',
+            parseTagValue: false,
+            parseAttributeValue: false,
+            isArray: tag => tag === 'si' || tag === 'r',
+        });
+        const ssDoc = ssParser.parse(ssText);
+        const sst = ssDoc.sst || ssDoc;
+        const siArr = Array.isArray(sst.si) ? sst.si : (sst.si ? [sst.si] : []);
+        for (const si of siArr) {
+            if (!si) { strings.push(''); continue; }
+            if (si.t !== undefined) {
+                const tv = si.t;
+                strings.push(typeof tv === 'object' ? (tv['#text'] || '') : String(tv || ''));
+            } else if (si.r) {
+                const parts = Array.isArray(si.r) ? si.r : [si.r];
+                strings.push(parts.map(r => {
+                    if (!r || r.t === undefined) return '';
+                    const tv = r.t;
+                    return typeof tv === 'object' ? (tv['#text'] || '') : String(tv || '');
+                }).join(''));
+            } else {
+                strings.push('');
+            }
+        }
+    }
+
+    // ── Выбор листа: sheet2 (лист ТУ в таблице уставок) → sheet1 (SiemensPie) ─
+    const sheetEntry = zip.getEntry('xl/worksheets/sheet2.xml')
+                    || zip.getEntry('xl/worksheets/sheet1.xml');
+    if (!sheetEntry) throw new Error(`Не найден лист в файле ${xlsxPath}`);
+
+    const sheetText = sheetEntry.getData().toString('utf8');
+    const shParser = new XMLParser({
+        ignoreAttributes: false,
+        attributeNamePrefix: '@_',
+        parseTagValue: false,
+        parseAttributeValue: false,
+        isArray: tag => tag === 'row' || tag === 'c',
+    });
+    const shDoc = shParser.parse(sheetText);
+    const ws = shDoc.worksheet || shDoc;
+    const sd = ws.sheetData || {};
+    const rows = Array.isArray(sd.row) ? sd.row : (sd.row ? [sd.row] : []);
+
+    const params = {};
+    let currentSection = '';
+
+    for (const row of rows) {
+        const cells = Array.isArray(row.c) ? row.c : (row.c ? [row.c] : []);
+        const rd = {};
+
+        for (const cell of cells) {
+            const ref = String(cell['@_r'] || '');
+            const col = ref.replace(/\d+$/, '');   // "A1" → "A", "AB12" → "AB"
+            const type = String(cell['@_t'] || '');
+            let val = '';
+
+            if (type === 's') {
+                const idx = parseInt(String(cell.v || ''));
+                val = (!isNaN(idx) && idx < strings.length) ? strings[idx] : '';
+            } else if (type === 'inlineStr') {
+                val = cell.is && cell.is.t ? String(cell.is.t) : '';
+            } else {
+                val = String(cell.v || '');
+            }
+            // Убрать артефакты переноса строки из xlsx (_x000D_)
+            val = val.replace(/_x000D_\r?\n?/g, '\n').trim();
+            if (col) rd[col] = val;
+        }
+
+        const addrRaw = (rd['A'] || '').trim();
+
+        // Строки без DAdr → заголовок раздела
+        if (!SIEMENS_DADR_RE.test(addrRaw)) {
+            if (addrRaw
+                && addrRaw !== 'Адрес'
+                && !/^\d+$/.test(addrRaw)
+                && !addrRaw.startsWith('УTBEPЖДAЮ')
+                && addrRaw.length > 3) {
+                currentSection = addrRaw;
+            }
+            continue;
+        }
+
+        // Строка-заголовок колонок (col B = "Параметр")
+        if ((rd['B'] || '').trim() === 'Параметр') continue;
+
+        const shortName = (rd['B'] || '').trim();
+        const comment   = (rd['H'] || '').trim();
+        // Убрать завершающий '*' (признак примечания в таблице)
+        const value = (rd['D'] || '').replace(/\*+$/, '').trim();
+
+        params[addrRaw] = {
+            id: addrRaw,
+            name: `[${addrRaw}] ${shortName || comment || addrRaw}`.trim(),
+            value,
+            unit: '',
+            path: currentSection,
+            source: 'xlsx',
+            // поля ниже нужны для совместимости с compare()
+            primaryValues: false,
+            rangeMin: 0,
+        };
+    }
+
+    return params;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Сравнение
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -436,19 +570,26 @@ function compare(wordParams, xmlParams, expanders) {
 // Форматирование отчёта
 // ─────────────────────────────────────────────────────────────────────────────
 
-function formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group) {
+function formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group, deviceType) {
     const SEP = '='.repeat(72);
     const lines = [];
     const add = (s = '') => lines.push(s);
+    const isSiemens = deviceType === 'Siemens';
 
     const now = new Date().toLocaleString('ru-RU');
     add(SEP);
     add('ОТЧЁТ СРАВНЕНИЯ ТАБЛИЦЫ УСТАВОК И ФАЙЛА КОНФИГУРАЦИИ');
     add(SEP);
     add(`Сформирован:          ${now}`);
-    add(`Таблица уставок:      ${wordPath}`);
-    add(`Файл конфигурации:    ${xmlPath}`);
-    add(`Группа уставок XML:   ${group}`);
+    if (isSiemens) {
+        add(`Тип терминала:        Siemens`);
+        add(`Таблица уставок:      ${wordPath}`);
+        add(`Конфигурация:         ${xmlPath}`);
+    } else {
+        add(`Таблица уставок:      ${wordPath}`);
+        add(`Файл конфигурации:    ${xmlPath}`);
+        add(`Группа уставок XML:   ${group}`);
+    }
     add();
     add(`Параметров в таблице:         ${Object.keys(wordParams).length}`);
     add(`Параметров в конфиге (всего): ${Object.keys(xmlParams).length}`);
@@ -504,9 +645,12 @@ function formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group) 
         add();
     }
 
+    const cfgLabel = isSiemens ? 'конфигурации (SiemensPie)' : 'конфиге';
+    const cfgLabelShort = isSiemens ? 'конфигурации' : 'конфиге';
+
     // 3. Только в таблице
     add(SEP);
-    add(`3. ЕСТЬ В ТАБЛИЦЕ, НЕТ В КОНФИГЕ — ${ow.length} позиций`);
+    add(`3. ЕСТЬ В ТАБЛИЦЕ, НЕТ В ${cfgLabel.toUpperCase()} — ${ow.length} позиций`);
     add(SEP);
     if (ow.length) {
         for (const p of ow) {
@@ -522,14 +666,14 @@ function formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group) 
 
     // 4. Только в конфиге
     add(SEP);
-    add(`4. ЕСТЬ В КОНФИГЕ (со значением), НЕТ В ТАБЛИЦЕ — ${ox.length} позиций`);
+    add(`4. ЕСТЬ В ${cfgLabel.toUpperCase()} (со значением), НЕТ В ТАБЛИЦЕ — ${ox.length} позиций`);
     add(SEP);
     if (ox.length) {
         for (const p of ox) {
             add(`  ${p.name}`);
             if (p.path) add(`    Раздел: ${p.path}`);
             const vStr = p.value + (p.unit ? ` ${p.unit}` : '');
-            add(`    Значение в конфиге: ${vStr}`);
+            add(`    Значение в ${cfgLabelShort}: ${vStr}`);
             add();
         }
     } else {
@@ -546,7 +690,7 @@ function formatReport(results, wordPath, xmlPath, wordParams, xmlParams, group) 
             add(`  ${p.name}`);
             if (p.path) add(`    Раздел: ${p.path}`);
             const vStr = p.valueXml + (p.unitXml ? ` ${p.unitXml}` : '');
-            add(`    Значение в конфиге: ${vStr}`);
+            add(`    Значение в ${cfgLabelShort}: ${vStr}`);
             add();
         }
     } else {
@@ -586,8 +730,32 @@ function cleanPath(p) {
     return p.trim().replace(/^["']|["']$/g, '').trim();
 }
 
+/** Общая часть: сохранить отчёт и открыть в Блокноте */
+function saveAndOpen(report, basePath, outputPath) {
+    const date = new Date().toISOString().slice(0, 10);
+    const absOut = outputPath
+        ? path.resolve(outputPath)
+        : path.join(path.dirname(basePath), `report_${date}.txt`);
+    fs.writeFileSync(absOut, '\uFEFF' + report, 'utf8');
+    if (process.platform === 'win32') {
+        try {
+            require('child_process').spawn('notepad.exe', [absOut], { detached: true, stdio: 'ignore' }).unref();
+        } catch (_) {}
+    }
+    return absOut;
+}
+
+function logSummary(results) {
+    const d = results.differences.length;
+    const s = (results.smallDiff || []).length;
+    const w = results.onlyWord.length;
+    const x = results.onlyXml.length;
+    const e = results.tableEmpty.length;
+    console.log(`Итог: Различий: ${d}  |  <1%: ${s}  |  Только в таблице: ${w}  |  Только в конфиге: ${x}  |  Пусто в таблице: ${e}`);
+}
+
+/** Режим БЭ2704: .docx vs .xml */
 async function run(wordPath, xmlPath, outputPath, group) {
-    // Привести к абсолютным путям
     const absWord = path.resolve(wordPath);
     const absXml  = path.resolve(xmlPath);
 
@@ -609,31 +777,38 @@ async function run(wordPath, xmlPath, outputPath, group) {
     console.log('Сравнение ...');
     const results = compare(wordParams, xmlParams, expanders);
     const report  = formatReport(results, absWord, absXml, wordParams, xmlParams, group);
-
-    // Имя выходного файла — рядом с таблицей, только ASCII в имени
-    const date = new Date().toISOString().slice(0, 10);
-    const absOut = outputPath
-        ? path.resolve(outputPath)
-        : path.join(path.dirname(absWord), `report_${date}.txt`);
-
-    // Записать с BOM для корректного отображения в Блокноте Windows
-    fs.writeFileSync(absOut, '\uFEFF' + report, 'utf8');
-
-    const d = results.differences.length;
-    const s = (results.smallDiff || []).length;
-    const w = results.onlyWord.length;
-    const x = results.onlyXml.length;
-    const e = results.tableEmpty.length;
+    const absOut  = saveAndOpen(report, absWord, outputPath);
     console.log(`\nОтчёт сохранён: ${absOut}`);
-    console.log(`Итог: Различий: ${d}  |  <1%: ${s}  |  Только в таблице: ${w}  |  Только в конфиге: ${x}  |  Пусто в таблице: ${e}`);
+    logSummary(results);
+    return absOut;
+}
 
-    // На Windows — открыть отчёт в Блокноте автоматически
-    if (process.platform === 'win32') {
-        try {
-            require('child_process').spawn('notepad.exe', [absOut], { detached: true, stdio: 'ignore' }).unref();
-        } catch (_) { /* ignore if notepad not available */ }
-    }
+/** Режим Siemens: таблица уставок .xlsx vs вывод SiemensPie .xlsx */
+async function runSiemens(tablePath, configPath, outputPath) {
+    const absTable  = path.resolve(tablePath);
+    const absConfig = path.resolve(configPath);
 
+    if (!fs.existsSync(absTable))  throw new Error(`Файл не найден: ${absTable}`);
+    if (!fs.existsSync(absConfig)) throw new Error(`Файл не найден: ${absConfig}`);
+
+    console.log(`Таблица уставок:           ${absTable}`);
+    console.log(`Конфигурация (SiemensPie): ${absConfig}`);
+    console.log();
+
+    console.log('Чтение таблицы уставок ...');
+    const tableParams  = parseXlsxParams(absTable);
+    console.log(`  Найдено параметров: ${Object.keys(tableParams).length}`);
+
+    console.log('Чтение конфигурации ...');
+    const configParams = parseXlsxParams(absConfig);
+    console.log(`  Найдено параметров: ${Object.keys(configParams).length}`);
+
+    console.log('Сравнение ...');
+    const results = compare(tableParams, configParams, {});
+    const report  = formatReport(results, absTable, absConfig, tableParams, configParams, null, 'Siemens');
+    const absOut  = saveAndOpen(report, absTable, outputPath);
+    console.log(`\nОтчёт сохранён: ${absOut}`);
+    logSummary(results);
     return absOut;
 }
 
@@ -668,15 +843,27 @@ async function interactiveMode() {
     console.log('Введите пути к файлам (можно перетащить файл в окно консоли).');
     console.log();
 
-    const word   = cleanPath(await ask('Таблица уставок (.docx): '));
-    const xml    = cleanPath(await ask('Файл конфигурации (.xml): '));
-    const grpStr = (await ask('Группа уставок (1-4, Enter = 1): ')).trim();
-    const group  = parseInt(grpStr) || 1;
-    rl.close();
-
+    const modeStr = (await ask('Тип терминала: 1 = БЭ2704 (docx + xml), 2 = Siemens (xlsx + xlsx) [Enter = 1]: ')).trim();
+    const isSiemens = modeStr === '2';
     console.log();
+
+    let absOut;
     try {
-        await run(word, xml, null, group);
+        if (isSiemens) {
+            const table  = cleanPath(await ask('Таблица уставок (.xlsx): '));
+            const config = cleanPath(await ask('Конфигурация SiemensPie (.xlsx): '));
+            rl.close();
+            console.log();
+            absOut = await runSiemens(table, config, null);
+        } else {
+            const word   = cleanPath(await ask('Таблица уставок (.docx): '));
+            const xml    = cleanPath(await ask('Файл конфигурации (.xml): '));
+            const grpStr = (await ask('Группа уставок (1-4, Enter = 1): ')).trim();
+            const group  = parseInt(grpStr) || 1;
+            rl.close();
+            console.log();
+            absOut = await run(word, xml, null, group);
+        }
     } catch (e) {
         console.error('\nОШИБКА:', e.message);
         writeErrorLog(e);
@@ -699,7 +886,13 @@ process.on('uncaughtException', async (err) => {
     const args = parseArgs(process.argv.slice(2));
     if (args.word && args.xml) {
         try {
-            await run(args.word, args.xml, args.output, args.group);
+            const isSiemens = args.word.toLowerCase().endsWith('.xlsx')
+                           && args.xml.toLowerCase().endsWith('.xlsx');
+            if (isSiemens) {
+                await runSiemens(args.word, args.xml, args.output);
+            } else {
+                await run(args.word, args.xml, args.output, args.group);
+            }
         } catch (e) {
             console.error('\nОШИБКА:', e.message);
             writeErrorLog(e);

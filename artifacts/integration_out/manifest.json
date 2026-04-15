@@ -1,0 +1,12 @@
+{
+  "source_type": "directory",
+  "root": "artifacts/integration_out/input",
+  "prot_files": [],
+  "par_files": [
+    "artifacts/integration_out/input/PAR.DPS",
+    "artifacts/integration_out/input/PAR.PDS",
+    "artifacts/integration_out/input/PAR.PSD",
+    "artifacts/integration_out/input/PAR.PSP"
+  ],
+  "parameter_count": 305
+}

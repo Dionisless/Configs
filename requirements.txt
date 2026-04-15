@@ -1,0 +1,3 @@
+# Runtime dependencies
+# rarfile is optional and used for .rar fallback extraction
+rarfile>=4.2

@@ -1,0 +1,15 @@
+
+--- STDERR ---
+test_extract_zip (test_container_reader.ContainerReaderTests) ... ok
+test_emit_xml_and_xrio (test_emitters.EmitterTests) ... ok
+test_full_pipeline (test_integration_pipeline.IntegrationPipelineTests) ... ok
+test_address (test_normalize.NormalizeTests) ... ok
+test_inf (test_normalize.NormalizeTests) ... ok
+test_txt_enum (test_normalize.NormalizeTests) ... ok
+test_decode_addresses (test_parser.ParserTests) ... ok
+test_existing_examples_are_comparable (test_regression_examples.RegressionExamplesTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.078s
+
+OK

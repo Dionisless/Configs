@@ -1,0 +1,12 @@
+{
+  "source_type": "directory",
+  "root": "artifacts/exe_run/input",
+  "prot_files": [],
+  "par_files": [
+    "artifacts/exe_run/input/PAR.DPS",
+    "artifacts/exe_run/input/PAR.PDS",
+    "artifacts/exe_run/input/PAR.PSD",
+    "artifacts/exe_run/input/PAR.PSP"
+  ],
+  "parameter_count": 305
+}

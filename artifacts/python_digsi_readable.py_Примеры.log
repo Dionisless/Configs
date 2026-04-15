@@ -1,0 +1,7 @@
+Pipeline completed
+output.xml: artifacts/integration_out/output.xml
+output.xrio: artifacts/integration_out/output.xrio
+report.txt: artifacts/integration_out/report.txt
+summary: {'missing_in_xml': 0, 'missing_in_xrio': 0, 'value_mismatch': 0, 'datatype_mismatch': 0}
+
+--- STDERR ---

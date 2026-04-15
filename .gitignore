@@ -1,2 +1,6 @@
-node_modules/
-compare_tool_errors.log
+__pycache__/
+*.pyc
+build/
+dist/
+*.spec
+out/

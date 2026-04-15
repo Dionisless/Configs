@@ -1,0 +1,2712 @@
+<XRio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+     <Version>1.0.0</Version>
+     <Language>ru</Language>
+     <RioConverter>
+          <Properties>
+               <Revision>1</Revision>
+               <ChangeDate>2024-05-08</ChangeDate>
+               <Author>SIEMENS AG</Author>
+          </Properties>
+          <ScriptReferences/>
+          <Script/>
+     </RioConverter>
+     <CUSTOM>
+          <Name>7SA522 - Converter</Name>
+          <Description>User defined relay parameters</Description>
+          <Block Id="SETTINGS">
+               <Name>Relay Parameter Section</Name>
+               <Description/>
+               <Block Id="DC">
+                    <Name>Конфигурация устройства</Name>
+                    <Description>Конфигурация устройства</Description>
+                    <Parameter Id="PID_16611">
+                         <Name>Переключ Группы</Name>
+                         <Description>Опция переключения группы уставок</Description>
+                         <ForeignId>0103</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+                    <Parameter Id="PID_25004">
+                         <Name>ДЗМеждуфазныхКЗ</Name>
+                         <Description>Дист. Защита от Междуфазных КЗ</Description>
+                         <ForeignId>0112</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_25101">Четырехугольник</EnumValue>
+                              <EnumValue EnumId="TXT_25102">Круговая</EnumValue>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_25101</Value>
+                    </Parameter>
+                    <Parameter Id="PID_25005">
+                         <Name>ДЗотКЗнаЗемлю</Name>
+                         <Description>Дист. Защита от КЗ на Землю</Description>
+                         <ForeignId>0113</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_25101">Четырехугольник</EnumValue>
+                              <EnumValue EnumId="TXT_25102">Круговая</EnumValue>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_25101</Value>
+                    </Parameter>
+                    <Parameter Id="PID_26561">
+                         <Name>Iф&gt;(Z1)</Name>
+                         <Description>Дополн. порог. знач. Iф&gt;(Z1)</Description>
+                         <ForeignId>0119</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+                    <Parameter Id="PID_25010">
+                         <Name>КачаниеМощности</Name>
+                         <Description>Качание Мощности Обнаружение</Description>
+                         <ForeignId>0120</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+                    <Parameter Id="PID_25006">
+                         <Name>Телеуск ДистЗащ</Name>
+                         <Description>Телеуск для Дистанционной защиты</Description>
+                         <ForeignId>0121</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_25113">Способ неполного охвата РUТТ(Z1В ускор.)</EnumValue>
+                              <EnumValue EnumId="TXT_25114">СпосРазр.ком.телеот.с расш.зоной охвРОТТ</EnumValue>
+                              <EnumValue EnumId="TXT_25115">Способ деблокировки</EnumValue>
+                              <EnumValue EnumId="TXT_25116">Способ блокировки</EnumValue>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_25012">
+                         <Name>ОтключВнешнКом</Name>
+                         <Description>Отключение Внешн Командой</Description>
+                         <ForeignId>0122</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+                    <Parameter Id="PID_25001">
+                         <Name>МгнОткПриВклКЗ</Name>
+                         <Description>Мгновенное отключ при включении на КЗ</Description>
+                         <ForeignId>0124</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+                    <Parameter Id="PID_25011">
+                         <Name>Слабое Питание</Name>
+                         <Description>Слабое питание (Откл-ние и/или функ ЭХО)</Description>
+                         <ForeignId>0125</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_25009">
+                         <Name>Резервн  МТЗ</Name>
+                         <Description>Резервн. МТЗ</Description>
+                         <ForeignId>0126</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_25103">МТЗ Времятоковая характеристика (МЭК)</EnumValue>
+                              <EnumValue EnumId="TXT_25104">МТЗ Времятоковая характеристика АNSI</EnumValue>
+                         </EnumList>
+                         <Value>TXT_25103</Value>
+                    </Parameter>
+                    <Parameter Id="PID_25007">
+                         <Name>ТЗНП</Name>
+                         <Description>Токовая Защ. Нулевой Последовательности</Description>
+                         <ForeignId>0131</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_25103">МТЗ Времятоковая характеристика (МЭК)</EnumValue>
+                              <EnumValue EnumId="TXT_25104">МТЗ Времятоковая характеристика АNSI</EnumValue>
+                              <EnumValue EnumId="TXT_25105">МТЗ Логариф. времятоковая характеристика</EnumValue>
+                              <EnumValue EnumId="TXT_25141">МТЗ с независимой выдержкой времени</EnumValue>
+                         </EnumList>
+                         <Value>TXT_25141</Value>
+                    </Parameter>
+                    <Parameter Id="PID_25008">
+                         <Name>Телеуск ТЗНП</Name>
+                         <Description>Телеускорение ТЗНП</Description>
+                         <ForeignId>0132</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_25117">Способ сравнения направлений</EnumValue>
+                              <EnumValue EnumId="TXT_25115">Способ деблокировки</EnumValue>
+                              <EnumValue EnumId="TXT_25116">Способ блокировки</EnumValue>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_25002">
+                         <Name>Опр Места Повр</Name>
+                         <Description>Определение Места повреждения</Description>
+                         <ForeignId>0138</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+                    <Parameter Id="PID_20042">
+                         <Name>Контр.цепи откл</Name>
+                         <Description>Контроль цепи отключения</Description>
+                         <ForeignId>0140</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_25138">1 цепь отключения</EnumValue>
+                              <EnumValue EnumId="TXT_25139">2 цепи отключения</EnumValue>
+                              <EnumValue EnumId="TXT_25140">3 цепи отключения</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+               </Block>
+               <Block Id="FG6">
+                    <Name>Устройство</Name>
+                    <Description>Устройство</Description>
+                    <Block Id="SP1">
+                         <Name/>
+                         <Description/>
+                         <Parameter Id="PID_16386">
+                              <Name>ИндПовр СД/Дсп</Name>
+                              <Description>Индикация повреждений: светодиод/дисплей</Description>
+                              <ForeignId>0610</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_2055">Отображение сообщений при каждом пуске</EnumValue>
+                                   <EnumValue EnumId="TXT_2070">Отображение сообщений только при откл.</EnumValue>
+                              </EnumList>
+                              <Value>TXT_2070</Value>
+                         </Parameter>
+                         <Parameter Id="PID_32425">
+                              <Name>Тмин удерж LЕD</Name>
+                              <Description>Мин. время удержания светодиод с памятью</Description>
+                              <ForeignId>0625A</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>INF</Value>
+                              <MinValue>0</MinValue>
+                              <MaxValue>60</MaxValue>
+                              <Unit DecimalPlaces="0">мин</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_16400">
+                              <Name>Дисп по Умолч</Name>
+                              <Description>Дисплей по умолчанию</Description>
+                              <ForeignId>0640</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_201">Основной экран, страница 1</EnumValue>
+                                   <EnumValue EnumId="TXT_202">Основной экран, страница 2</EnumValue>
+                                   <EnumValue EnumId="TXT_203">Основной экран, страница 3</EnumValue>
+                                   <EnumValue EnumId="TXT_204">Основной экран, страница 4</EnumValue>
+                              </EnumList>
+                              <Value>TXT_201</Value>
+                         </Parameter>
+                    </Block>
+               </Block>
+               <Block Id="FG2">
+                    <Name>Данные ЭС1</Name>
+                    <Description>Данные энергосистемы 1</Description>
+                    <Block Id="SP1">
+                         <Name>Парам ТТ/ТН</Name>
+                         <Description>Парам ТТ/ТН</Description>
+                         <Parameter Id="PID_20052">
+                              <Name>Полярность ТТ</Name>
+                              <Description>Полярность трансформатора тока</Description>
+                              <ForeignId>0201</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_12501">В сторону линии</EnumValue>
+                                   <EnumValue EnumId="TXT_12502">В сторону шин</EnumValue>
+                              </EnumList>
+                              <Value>TXT_12501</Value>
+                         </Parameter>
+                         <Parameter Id="PID_20053">
+                              <Name>Uном Первич</Name>
+                              <Description>Первичное номинальное напряжение</Description>
+                              <ForeignId>0203</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>220.0</Value>
+                              <MinValue>1.0</MinValue>
+                              <MaxValue>1200.0</MaxValue>
+                              <Unit DecimalPlaces="1">кВ</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_20054">
+                              <Name>Uном Вторич</Name>
+                              <Description>Вторичное номинальное напряжение</Description>
+                              <ForeignId>0204</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>100</Value>
+                              <MinValue>80</MinValue>
+                              <MaxValue>125</MaxValue>
+                              <Unit DecimalPlaces="0">В</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_20000">
+                              <Name>Iном первич ТТ</Name>
+                              <Description>Первичный номинальный ток ТТ</Description>
+                              <ForeignId>0205</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>1000</Value>
+                              <MinValue>10</MinValue>
+                              <MaxValue>5000</MaxValue>
+                              <Unit DecimalPlaces="0">А</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_20001">
+                              <Name>Iном вторич ТТ</Name>
+                              <Description>Вторичный номинальный ток ТТ</Description>
+                              <ForeignId>0206</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_12921">1А</EnumValue>
+                                   <EnumValue EnumId="TXT_12922">5А</EnumValue>
+                              </EnumList>
+                              <Value>TXT_12921</Value>
+                         </Parameter>
+                         <Parameter Id="PID_16385">
+                              <Name>U4 ТН</Name>
+                              <Description>U4 трансформатор напряжения подкл. как</Description>
+                              <ForeignId>0210</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_12508">Не подключен</EnumValue>
+                                   <EnumValue EnumId="TXT_12790">Uдельта трансформатора напряжения</EnumValue>
+                              </EnumList>
+                              <Value>TXT_12508</Value>
+                         </Parameter>
+                         <Parameter Id="PID_20055">
+                              <Name>Uф / Uтреуг</Name>
+                              <Description>Коэффициент согласования Uф к Uтреуг.</Description>
+                              <ForeignId>0211</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>0.58</Value>
+                              <MinValue>0.10</MinValue>
+                              <MaxValue>9.99</MaxValue>
+                              <Unit DecimalPlaces="2"/>
+                         </Parameter>
+                         <Parameter Id="PID_25782">
+                              <Name>Usу1/Usу2</Name>
+                              <Description>Согласующий коэффициент Usу1 / Usу2</Description>
+                              <ForeignId>0215</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>1.00</Value>
+                              <MinValue>0.50</MinValue>
+                              <MaxValue>2.00</MaxValue>
+                              <Unit DecimalPlaces="2"/>
+                         </Parameter>
+                         <Parameter Id="PID_16384">
+                              <Name>I4 ТТ</Name>
+                              <Description>I4 транформатор тока подключен как</Description>
+                              <ForeignId>0220</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_12508">Не подключен</EnumValue>
+                                   <EnumValue EnumId="TXT_12510">Iе, (в защищаемой линии)</EnumValue>
+                                   <EnumValue EnumId="TXT_12512">Iе, заземл. сил. трансформатора</EnumValue>
+                              </EnumList>
+                              <Value>TXT_12510</Value>
+                         </Parameter>
+                         <Parameter Id="PID_25050">
+                              <Name>I4/Iф для ТТ</Name>
+                              <Description>Согласующий коэфф I4/Iф для ТТ</Description>
+                              <ForeignId>0221</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>1.000</Value>
+                              <MinValue>0.010</MinValue>
+                              <MaxValue>5.000</MaxValue>
+                              <Unit DecimalPlaces="3"/>
+                         </Parameter>
+                    </Block>
+                    <Block Id="SP2">
+                         <Name>Параметры сети</Name>
+                         <Description>Параметры сети</Description>
+                         <Parameter Id="PID_25059">
+                              <Name>НейтральСистемы</Name>
+                              <Description>Нейтраль системы является</Description>
+                              <ForeignId>0207</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_25133">Глухозаземленная</EnumValue>
+                                   <EnumValue EnumId="TXT_25134">Компенсированная</EnumValue>
+                                   <EnumValue EnumId="TXT_25135">Изолированная</EnumValue>
+                              </EnumList>
+                              <Value>TXT_25133</Value>
+                         </Parameter>
+                         <Parameter Id="PID_20045">
+                              <Name>Номин Частота</Name>
+                              <Description>Номинальная частота</Description>
+                              <ForeignId>0230</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_12506">50 Гц</EnumValue>
+                                   <EnumValue EnumId="TXT_12507">60 Гц</EnumValue>
+                              </EnumList>
+                              <Value>TXT_12506</Value>
+                         </Parameter>
+                         <Parameter Id="PID_20002">
+                              <Name>Чередование фаз</Name>
+                              <Description>Порядок чередования фаз</Description>
+                              <ForeignId>0235</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_22040">А В С</EnumValue>
+                                   <EnumValue EnumId="TXT_22041">А С В</EnumValue>
+                              </EnumList>
+                              <Value>TXT_22040</Value>
+                         </Parameter>
+                         <Parameter Id="PID_26002">
+                              <Name>Ед. изм расст</Name>
+                              <Description>Единицы измерения расстояния</Description>
+                              <ForeignId>0236</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_12951">км</EnumValue>
+                                   <EnumValue EnumId="TXT_12952">мили</EnumValue>
+                              </EnumList>
+                              <Value>TXT_12951</Value>
+                         </Parameter>
+                         <Parameter Id="PID_25071">
+                              <Name>Формат Z0/Z1</Name>
+                              <Description>Установка формата для компен.нул.посл.</Description>
+                              <ForeignId>0237</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_25147">Коэффициенты нул.посл. Rз/Rф и Хз/Хф</EnumValue>
+                                   <EnumValue EnumId="TXT_25148">Коэффициент комп.нул.посл. К0 и угол(К0)</EnumValue>
+                              </EnumList>
+                              <Value>TXT_25147</Value>
+                         </Parameter></Block>
+               
+                    <Block Id="SP3">
+                         <Name>Выключатель</Name>
+                         <Description>Выключатель</Description>
+                         <Parameter Id="PID_20062">
+                              <Name>Тмин Ком Откл</Name>
+                              <Description>Мин. длительность команды отключения</Description>
+                              <ForeignId>0240A</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>0.10</Value>
+                              <MinValue>0.02</MinValue>
+                              <MaxValue>30.00</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_20063">
+                              <Name>Тмакс Ком Вкл</Name>
+                              <Description>Макс. длительность команды включения</Description>
+                              <ForeignId>0241A</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>0.10</Value>
+                              <MinValue>0.01</MinValue>
+                              <MaxValue>30.00</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_26050">
+                              <Name>Тапв ВЫКЛ</Name>
+                              <Description>Тест ВЫКЛ: время бестоковой паузы АПВ</Description>
+                              <ForeignId>0242</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>0.10</Value>
+                              <MinValue>0.00</MinValue>
+                              <MaxValue>30.00</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter></Block>
+               </Block>
+          
+               <Block Id="FG3">
+                    <Name>Измен Группы</Name>
+                    <Description>Изменение Группы</Description>
+                    <Block Id="SP1">
+                         <Name/>
+                         <Description/>
+                         <Parameter Id="PID_16610">
+                              <Name>Изменить группу</Name>
+                              <Description>Активировать другую группу уставок</Description>
+                              <ForeignId>0302</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_1">Группа уставок А</EnumValue>
+                                   <EnumValue EnumId="TXT_2">Группа уставок В</EnumValue>
+                                   <EnumValue EnumId="TXT_3">Группа уставок С</EnumValue>
+                                   <EnumValue EnumId="TXT_4">Группа уставок D</EnumValue>
+                                   <EnumValue EnumId="TXT_5">Дискретный вход</EnumValue>
+                                   <EnumValue EnumId="TXT_6">Протокол</EnumValue>
+                              </EnumList>
+                              <Value>TXT_5</Value>
+                         </Parameter>
+                    </Block></Block>
+          
+               <Block Id="FG4">
+                    <Name>Рег Авар Реж</Name>
+                    <Description>Регистрация аварийных режимов</Description>
+                    <Block Id="SP1">
+                         <Name/>
+                         <Description/>
+                         <Parameter Id="PID_16612">
+                              <Name>Запуск Регистр</Name>
+                              <Description>Запуск регистрации повреждений</Description>
+                              <ForeignId>0402A</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_9">Сохранить при пуске</EnumValue>
+                                   <EnumValue EnumId="TXT_10">Сохранить при отключении</EnumValue>
+                                   <EnumValue EnumId="TXT_11">Пуск при отключении</EnumValue>
+                              </EnumList>
+                              <Value>TXT_9</Value>
+                         </Parameter>
+                         <Parameter Id="PID_16613">
+                              <Name>Объем Регистр</Name>
+                              <Description>Объем записываемых данных</Description>
+                              <ForeignId>0403A</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_12">Повреждение</EnumValue>
+                                   <EnumValue EnumId="TXT_13">Повреждение в энергосистеме</EnumValue>
+                              </EnumList>
+                              <Value>TXT_12</Value>
+                         </Parameter>
+                         <Parameter Id="PID_16614">
+                              <Name>Макс время Рег</Name>
+                              <Description>Максимальное время записи повреждения</Description>
+                              <ForeignId>0410</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>4.00</Value>
+                              <MinValue>0.30</MinValue>
+                              <MaxValue>5.00</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_16615">
+                              <Name>Время до Нач</Name>
+                              <Description>Время записи до начала регистрации</Description>
+                              <ForeignId>0411</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>0.25</Value>
+                              <MinValue>0.05</MinValue>
+                              <MaxValue>0.50</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_16616">
+                              <Name>Врем после Повр</Name>
+                              <Description>Время записи после повреждения</Description>
+                              <ForeignId>0412</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>0.10</Value>
+                              <MinValue>0.05</MinValue>
+                              <MaxValue>0.50</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_16617">
+                              <Name>ВремяЗаписи ДВх</Name>
+                              <Description>Время записи при пуске через дискр.вход</Description>
+                              <ForeignId>0415</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>2.00</Value>
+                              <MinValue>0.10</MinValue>
+                              <MaxValue>5.00</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter>
+                    </Block></Block>
+          
+               <Block Id="PG1">
+                    <Name>Группа уставок А</Name>
+                    <Description/>
+                    <Block Id="FG11">
+                         <Name>Параметры ЭС2</Name>
+                         <Description>Параметры энергосистемы 2</Description>
+                         <Block Id="SP1">
+                              <Name>Параметры сети</Name>
+                              <Description>Параметры сети</Description>
+                              <Parameter Id="PID_21003">
+                                   <Name>100% шкалы напр</Name>
+                                   <Description>Измерения: 100% шкалы напряжения</Description>
+                                   <ForeignId>1103</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>220.0</Value>
+                                   <MinValue>1.0</MinValue>
+                                   <MaxValue>1200.0</MaxValue>
+                                   <Unit DecimalPlaces="1">кВ</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_21002">
+                                   <Name>100% шкалы тока</Name>
+                                   <Description>Измерения: 100% шкалы тока</Description>
+                                   <ForeignId>1104</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>1000</Value>
+                                   <MinValue>10</MinValue>
+                                   <MaxValue>5000</MaxValue>
+                                   <Unit DecimalPlaces="0">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25055">
+                                   <Name>Угол Линии</Name>
+                                   <Description>Угол Линии</Description>
+                                   <ForeignId>1105</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>76</Value>
+                                   <MinValue>10</MinValue>
+                                   <MaxValue>89</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25057">
+                                   <Name>УголНаклХарДЗ</Name>
+                                   <Description>Угол наклона харак Дист защиты</Description>
+                                   <ForeignId>1211</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>76</Value>
+                                   <MinValue>30</MinValue>
+                                   <MaxValue>90</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26450">
+                                   <Name>Р,Q знак</Name>
+                                   <Description>Знак Р,Q</Description>
+                                   <ForeignId>1107</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25243">Неинвертированная</EnumValue>
+                                        <EnumValue EnumId="TXT_25242">Инвертированная</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25243</Value>
+                              </Parameter>
+                              <Parameter Id="PID_20061">
+                                   <Name>х втор</Name>
+                                   <Description>Удельное реакт. сопрот-ние линии Хвтор.</Description>
+                                   <ForeignId>1110</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.1914</Value>
+                                   <MinValue>0.0050</MinValue>
+                                   <MaxValue>9.5000</MaxValue>
+                                   <Unit DecimalPlaces="4">Ом / км</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25062">
+                                   <Name>Длина линии</Name>
+                                   <Description>Длина линии</Description>
+                                   <ForeignId>1111</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>111.0</Value>
+                                   <MinValue>0.1</MinValue>
+                                   <MaxValue>1000.0</MaxValue>
+                                   <Unit DecimalPlaces="1">км</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25410">
+                                   <Name>RЕ/RL(Z1)</Name>
+                                   <Description>Коэфф.комп.нул.посл. RЕ/RL для Z1</Description>
+                                   <ForeignId>1116</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.69</Value>
+                                   <MinValue>-0.33</MinValue>
+                                   <MaxValue>10.00</MaxValue>
+                                   <Unit DecimalPlaces="2"/>
+                              </Parameter>
+                              <Parameter Id="PID_25411">
+                                   <Name>ХЕ/ХL(Z1)</Name>
+                                   <Description>Коэфф.комп.нул.посл.ХЕ/ХL для Z1</Description>
+                                   <ForeignId>1117</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.55</Value>
+                                   <MinValue>-0.33</MinValue>
+                                   <MaxValue>10.00</MaxValue>
+                                   <Unit DecimalPlaces="2"/>
+                              </Parameter>
+                              <Parameter Id="PID_25412">
+                                   <Name>RЕ/RL(Z1В-Z5)</Name>
+                                   <Description>Коэфф.комп.нул.посл.RЕ/RL для Z1В...Z5</Description>
+                                   <ForeignId>1118</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.69</Value>
+                                   <MinValue>-0.33</MinValue>
+                                   <MaxValue>10.00</MaxValue>
+                                   <Unit DecimalPlaces="2"/>
+                              </Parameter>
+                              <Parameter Id="PID_25413">
+                                   <Name>ХЕ/ХL(Z1В-Z5)</Name>
+                                   <Description>Коэфф.комп.нул.посл.ХЕ/ХL для Z1В...Z5</Description>
+                                   <ForeignId>1119</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.55</Value>
+                                   <MinValue>-0.33</MinValue>
+                                   <MaxValue>10.00</MaxValue>
+                                   <Unit DecimalPlaces="2"/>
+                              </Parameter>
+                         </Block>
+                         <Block Id="SP2">
+                              <Name>Состояние Линии</Name>
+                              <Description>Состояние Линии</Description>
+                              <Parameter Id="PID_25064">
+                                   <Name>ТокРазомкФазы</Name>
+                                   <Description>Порог Тока Разомкнутой Фазы</Description>
+                                   <ForeignId>1130A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.10</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>1.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25065">
+                                   <Name>НапрРазомкФазы</Name>
+                                   <Description>Порог Напряжения Разомкнутой Фазы</Description>
+                                   <ForeignId>1131A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>34</Value>
+                                   <MinValue>2</MinValue>
+                                   <MaxValue>70</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25066">
+                                   <Name>ВрПодхВсехКомВк</Name>
+                                   <Description>Время подхвата после всех команд включ-я</Description>
+                                   <ForeignId>1132A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.60</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25072">
+                                   <Name>Т ВклНаПовр</Name>
+                                   <Description>Мин.вр.отключ.сост.линии перед ВклНаПовр</Description>
+                                   <ForeignId>1133A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.25</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25070">
+                                   <Name>ВключениеЛинии</Name>
+                                   <Description>Обнаружение Включений Линии по</Description>
+                                   <ForeignId>1134</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12607">Ручное включение только через диск.вход</EnumValue>
+                                        <EnumValue EnumId="TXT_25143">Ток или Напр.или Руч.Вкл.через диск.вх.</EnumValue>
+                                        <EnumValue EnumId="TXT_25144">Бл-контВЫКЛ илиТок илиРучВк.чер.дис.вх.</EnumValue>
+                                        <EnumValue EnumId="TXT_25142">Наличие тока или Руч.Вкл. через диск.вх.</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12607</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25069">
+                                   <Name>Сброс Ком.Откл.</Name>
+                                   <Description>СБРОС Команды Отключения</Description>
+                                   <ForeignId>1135</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25145">Превыш порога I остаточного</EnumValue>
+                                        <EnumValue EnumId="TXT_25146">бл-конт ВЫКЛ и I&lt; остаточный</EnumValue>
+                                        <EnumValue EnumId="TXT_25232">Возврат Пуска</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25232</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26411">
+                                   <Name>ДетектОбрывФазы</Name>
+                                   <Description>Детектор обрыва фазы</Description>
+                                   <ForeignId>1136</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                        <EnumValue EnumId="TXT_25146">бл-конт ВЫКЛ и I&lt; остаточный</EnumValue>
+                                        <EnumValue EnumId="TXT_25508">С измерением(U/I,откл.,пуск,блок-конт.)</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25508</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25056">
+                                   <Name>I-порог насТТ</Name>
+                                   <Description>Порог насыщения ТТ</Description>
+                                   <ForeignId>1140A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>20.0</Value>
+                                   <MinValue>0.2</MinValue>
+                                   <MaxValue>50.0</MaxValue>
+                                   <Unit DecimalPlaces="1">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25051">
+                                   <Name>ДейсПослРучВкл</Name>
+                                   <Description>Продолжит.действия после РУЧН.включения</Description>
+                                   <ForeignId>1150A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.60</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25751">
+                                   <Name>РУЧ.ВКЛЮЧЕНИЕ</Name>
+                                   <Description>Генерация КОМАНДЫ РУЧНОГО включения</Description>
+                                   <ForeignId>1151</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25185">без контроля Синхронизма</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                         </Block>
+                    </Block>
+                    <Block Id="FG12">
+                         <Name>ДистЗ Общие уст</Name>
+                         <Description>Дистанционная защита, Общие установки</Description>
+                         <Block Id="SP1">
+                              <Name>Общее</Name>
+                              <Description>Общее</Description>
+                              <Parameter Id="PID_25400">
+                                   <Name>Ф-я ДЗ</Name>
+                                   <Description>Функция ДЗ является</Description>
+                                   <ForeignId>1201</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_22">ВКЛ</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_22</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25402">
+                                   <Name>Iф&gt;</Name>
+                                   <Description>уставка Фазного Тока для дист.измерений</Description>
+                                   <ForeignId>1202</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.12</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>4.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26421">
+                                   <Name>Посл Комп</Name>
+                                   <Description>Последовательно компенсированная линия</Description>
+                                   <ForeignId>1208</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25416">
+                                   <Name>СтОтклПриВклКЗ</Name>
+                                   <Description>Мгновенное откл. при вкл. на КЗ</Description>
+                                   <ForeignId>1232</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12518">при Пуске (ненаправл.)</EnumValue>
+                                        <EnumValue EnumId="TXT_12517">Ступень Z1В</EnumValue>
+                                        <EnumValue EnumId="TXT_12519">Z1В ненаправл.</EnumValue>
+                                        <EnumValue EnumId="TXT_12530">Ступень Z1</EnumValue>
+                                        <EnumValue EnumId="TXT_12531">Z1 ненаправл.</EnumValue>
+                                        <EnumValue EnumId="TXT_12656">Неактивный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12517</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26101">
+                                   <Name>Rнагр(ф-з)</Name>
+                                   <Description>Мин сопротивление нагрузки (ф-з)</Description>
+                                   <ForeignId>1241</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>54.545</Value>
+                                   <MinValue>0.100</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26102">
+                                   <Name>? нагр (ф-з)</Name>
+                                   <Description>Макс Угол нагрузки (ф-з)</Description>
+                                   <ForeignId>1242</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>43</Value>
+                                   <MinValue>20</MinValue>
+                                   <MaxValue>60</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26103">
+                                   <Name>Rнагр (ф-ф)</Name>
+                                   <Description>Мин Сопротивление Нагрузки (ф-ф)</Description>
+                                   <ForeignId>1243</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>54.545</Value>
+                                   <MinValue>0.100</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26104">
+                                   <Name>? нагр (ф-ф)</Name>
+                                   <Description>Макс Угол нагрузки (ф-ф)</Description>
+                                   <ForeignId>1244</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>43</Value>
+                                   <MinValue>20</MinValue>
+                                   <MaxValue>60</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25414">
+                                   <Name>1-е АПВ-&gt; Z1В</Name>
+                                   <Description>Z1В введена перед 1-ым АПВ(вн.или внеш.)</Description>
+                                   <ForeignId>1357</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25</Value>
+                              </Parameter>
+                         </Block>
+                         <Block Id="SP3">
+                              <Name>Пуск Земл</Name>
+                              <Description>Пуск Земл</Description>
+                              <Parameter Id="PID_25403">
+                                   <Name>3I0&gt;</Name>
+                                   <Description>3I0 уставка пуска по току нул.посл.</Description>
+                                   <ForeignId>1203</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.10</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>4.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25404">
+                                   <Name>3U0&gt;</Name>
+                                   <Description>3U0 уставка пуск по напр.нул.посл.</Description>
+                                   <ForeignId>1204</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>1</MinValue>
+                                   <MaxValue>100</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26126">
+                                   <Name>3I0&gt;/ Iфмакс</Name>
+                                   <Description>3I0&gt; пуск  стабилизация (3I0&gt; /Iфмакс)</Description>
+                                   <ForeignId>1207A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.05</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>0.30</MaxValue>
+                                   <Unit DecimalPlaces="2"/>
+                              </Parameter>
+                              <Parameter Id="PID_26408">
+                                   <Name>Опред ЗЗ</Name>
+                                   <Description>Критерий определен Замык на Землю</Description>
+                                   <ForeignId>1209A</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25240">3I0&gt; ИЛИ 3U0&gt;</EnumValue>
+                                        <EnumValue EnumId="TXT_25241">3I0&gt; И 3U0&gt;</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25240</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25406">
+                                   <Name>2ф-з КЗ</Name>
+                                   <Description>Выбор контура при 2ф-з КЗ</Description>
+                                   <ForeignId>1221A</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12823">Блокировка опережающей фазы</EnumValue>
+                                        <EnumValue EnumId="TXT_12821">Блокировка отстающей фазы</EnumValue>
+                                        <EnumValue EnumId="TXT_12676">все контура</EnumValue>
+                                        <EnumValue EnumId="TXT_12527">только в контурах фаза-фаза</EnumValue>
+                                        <EnumValue EnumId="TXT_12528">только в контурах фаза-земля</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12527</Value>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP4">
+                              <Name>Выдержка врем</Name>
+                              <Description>Выдержка врем</Description>
+                              <Parameter Id="PID_26410">
+                                   <Name>ЗапускТаймеров</Name>
+                                   <Description>Условие для запуска таймеров ступеней</Description>
+                                   <ForeignId>1210</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25244">с пуском Дистанционной Защиты</EnumValue>
+                                        <EnumValue EnumId="TXT_25245">с пуском ступени</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25245</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25424">
+                                   <Name>Т1-однофаз</Name>
+                                   <Description>Т1-однофаз, Выдержка для однофаз повр.</Description>
+                                   <ForeignId>1305</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25425">
+                                   <Name>Т1-многофаз</Name>
+                                   <Description>Т1-многофаз, Выдержка для многофаз повр.</Description>
+                                   <ForeignId>1306</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25430">
+                                   <Name>Т2-однофаз</Name>
+                                   <Description>Т2-однофаз, Выдержка для однофаз. повр.</Description>
+                                   <ForeignId>1315</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25431">
+                                   <Name>Т2-многофаз</Name>
+                                   <Description>Т2-многофаз, Выдержка для многофаз повр.</Description>
+                                   <ForeignId>1316</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.70</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25436">
+                                   <Name>Т3 Выдержка</Name>
+                                   <Description>Т3 Выдержка</Description>
+                                   <ForeignId>1325</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>4.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25441">
+                                   <Name>Т4 Выдержка</Name>
+                                   <Description>Т4 Выдержка</Description>
+                                   <ForeignId>1335</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25484">
+                                   <Name>Выдержка Т5</Name>
+                                   <Description>Выдержка Т5</Description>
+                                   <ForeignId>1345</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26555">
+                                   <Name>Т6 Выдержка</Name>
+                                   <Description>Т6 Выдержка</Description>
+                                   <ForeignId>1365</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25450">
+                                   <Name>Т1В-однофаз</Name>
+                                   <Description>Т1В-однофаз, Выдержка для однофаз повр.</Description>
+                                   <ForeignId>1355</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25451">
+                                   <Name>Т1В-многофаз</Name>
+                                   <Description>Т1В-многофаз, Выдержка для многофаз повр</Description>
+                                   <ForeignId>1356</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter></Block>
+                    </Block>
+               
+                    <Block Id="FG13">
+                         <Name>ДистЗ четырехуг</Name>
+                         <Description>Дист.защита, ступени (четырехуг.)</Description>
+                         <Block Id="SP2">
+                              <Name>Ступень Z1</Name>
+                              <Description>Ступень Z1</Description>
+                              <Parameter Id="PID_25420">
+                                   <Name>Реж Раб Z1</Name>
+                                   <Description>Режим работы Z1</Description>
+                                   <ForeignId>1301</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12514">В прямом направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12515">В обратном направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12516">Ненаправленное</EnumValue>
+                                        <EnumValue EnumId="TXT_12656">Неактивный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12514</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25421">
+                                   <Name>R(Z1) Ф-Ф</Name>
+                                   <Description>R(Z1), Сопротивление для повр. Ф-Ф</Description>
+                                   <ForeignId>1302</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>9.545</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25422">
+                                   <Name>Х(Z1)</Name>
+                                   <Description>Х(Z1), РеакСопротивление</Description>
+                                   <ForeignId>1303</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>17.955</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25423">
+                                   <Name>RЕ(Z1) Ф-З</Name>
+                                   <Description>RЕ(Z1), Сопротивление для повр. Ф-З</Description>
+                                   <ForeignId>1304</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>31.818</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25452">
+                                   <Name>Угол ? Z1</Name>
+                                   <Description>Угол аlрна ступени Z1 (компенс.нагрузки)</Description>
+                                   <ForeignId>1307</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>14</Value>
+                                   <MinValue>0</MinValue>
+                                   <MaxValue>45</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26560">
+                                   <Name>Iф&gt;(Z1)</Name>
+                                   <Description>Минимальный ток Iф&gt;(Z1) только для Z1</Description>
+                                   <ForeignId>1308</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.12</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>20.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                         </Block>
+                         <Block Id="SP7">
+                              <Name>Ступень Z1В</Name>
+                              <Description>Ступень Z1В</Description>
+                              <Parameter Id="PID_25446">
+                                   <Name>Реж Раб Z1В</Name>
+                                   <Description>Режим работы Z1В (промежут. ступень)</Description>
+                                   <ForeignId>1351</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12514">В прямом направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12515">В обратном направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12516">Ненаправленное</EnumValue>
+                                        <EnumValue EnumId="TXT_12656">Неактивный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12514</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25447">
+                                   <Name>R(Z1В) Ф-Ф</Name>
+                                   <Description>R(Z1В), Сопротивление для повр. Ф-Ф</Description>
+                                   <ForeignId>1352</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>31.818</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25448">
+                                   <Name>Х(Z1В)</Name>
+                                   <Description>Х(Z1В), РеакСопротивление</Description>
+                                   <ForeignId>1353</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>45.455</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25449">
+                                   <Name>RЕ(Z1В) Ф-ЗЕМ</Name>
+                                   <Description>RЕ(Z1В), Сопротивление для повр. Ф-З</Description>
+                                   <ForeignId>1354</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>31.818</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP3">
+                              <Name>Ступень Z2</Name>
+                              <Description>Ступень Z2</Description>
+                              <Parameter Id="PID_25426">
+                                   <Name>Реж Раб Z2</Name>
+                                   <Description>Режим работы Z2</Description>
+                                   <ForeignId>1311</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12514">В прямом направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12515">В обратном направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12516">Ненаправленное</EnumValue>
+                                        <EnumValue EnumId="TXT_12656">Неактивный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12514</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25427">
+                                   <Name>R(Z2) Ф-Ф</Name>
+                                   <Description>R(Z2), Сопротивление для повр. Ф-Ф</Description>
+                                   <ForeignId>1312</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>31.818</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25428">
+                                   <Name>Х(Z2)</Name>
+                                   <Description>Х(Z2), РеакСопротивление</Description>
+                                   <ForeignId>1313</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>45.455</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25429">
+                                   <Name>RЕ(Z2) Ф-ЗЕМ</Name>
+                                   <Description>RЕ(Z2), Сопротивление для повр. Ф-З</Description>
+                                   <ForeignId>1314</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.050</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP4">
+                              <Name>Ступень Z3</Name>
+                              <Description>Ступень Z3</Description>
+                              <Parameter Id="PID_25432">
+                                   <Name>Реж Раб Z3</Name>
+                                   <Description>Режим работы Z3</Description>
+                                   <ForeignId>1321</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12514">В прямом направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12515">В обратном направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12516">Ненаправленное</EnumValue>
+                                        <EnumValue EnumId="TXT_12656">Неактивный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12514</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25433">
+                                   <Name>R(Z3) Ф-Ф</Name>
+                                   <Description>R(Z3), Сопротивление для повр. Ф-Ф</Description>
+                                   <ForeignId>1322</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>54.545</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25434">
+                                   <Name>Х(Z3)</Name>
+                                   <Description>Х(Z3), РеакСопротивление</Description>
+                                   <ForeignId>1323</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>104.545</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25435">
+                                   <Name>RЕ(Z3) Ф-ЗЕМ</Name>
+                                   <Description>RЕ(Z3), Сопротивление для повр.Ф-З</Description>
+                                   <ForeignId>1324</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.050</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP5">
+                              <Name>Ступень Z4</Name>
+                              <Description>Ступень Z4</Description>
+                              <Parameter Id="PID_25437">
+                                   <Name>Реж Раб Z4</Name>
+                                   <Description>Режим работы Z4</Description>
+                                   <ForeignId>1331</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12514">В прямом направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12515">В обратном направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12516">Ненаправленное</EnumValue>
+                                        <EnumValue EnumId="TXT_12656">Неактивный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12656</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25438">
+                                   <Name>R(Z4) Ф-Ф</Name>
+                                   <Description>R(Z4), Сопротивление для повр. Ф-Ф</Description>
+                                   <ForeignId>1332</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.050</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25439">
+                                   <Name>Х(Z4)</Name>
+                                   <Description>Х(Z4), РеакСопротивление</Description>
+                                   <ForeignId>1333</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.050</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25440">
+                                   <Name>RЕ(Z4) Ф-ЗЕМ</Name>
+                                   <Description>RЕ(Z4), Сопротивление для повр.Ф-З</Description>
+                                   <ForeignId>1334</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.050</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP6">
+                              <Name>Ступень Z5</Name>
+                              <Description>Ступень Z5</Description>
+                              <Parameter Id="PID_25442">
+                                   <Name>Реж Раб Z5</Name>
+                                   <Description>Режим работы Z5</Description>
+                                   <ForeignId>1341</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12514">В прямом направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12515">В обратном направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12516">Ненаправленное</EnumValue>
+                                        <EnumValue EnumId="TXT_12656">Неактивный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12516</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25443">
+                                   <Name>R(Z5) Ф-Ф</Name>
+                                   <Description>R(Z5), Сопротивление для повр. Ф-Ф</Description>
+                                   <ForeignId>1342</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>54.545</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26105">
+                                   <Name>Х(Z5)+</Name>
+                                   <Description>Х(Z5)+, РеакСопр. Направление Вперед</Description>
+                                   <ForeignId>1343</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>104.545</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25445">
+                                   <Name>RЕ(Z5) Ф-ЗЕМ</Name>
+                                   <Description>RЕ(Z5), Сопротивление для повр. Ф-З</Description>
+                                   <ForeignId>1344</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>54.545</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26106">
+                                   <Name>Х(Z5)-</Name>
+                                   <Description>Х(Z5)-, РеакСопр. Направление Назад</Description>
+                                   <ForeignId>1346</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>54.545</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP8">
+                              <Name>Ступень Z6</Name>
+                              <Description>Ступень Z6</Description>
+                              <Parameter Id="PID_26550">
+                                   <Name>Реж Раб Z6</Name>
+                                   <Description>Режим работы Z6</Description>
+                                   <ForeignId>1361</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12514">В прямом направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12515">В обратном направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12516">Ненаправленное</EnumValue>
+                                        <EnumValue EnumId="TXT_12656">Неактивный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12656</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26551">
+                                   <Name>R(Z6) Ф-Ф</Name>
+                                   <Description>R(Z6), Сопротивление для повр. Ф-Ф</Description>
+                                   <ForeignId>1362</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.050</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26552">
+                                   <Name>Х(Z6)+</Name>
+                                   <Description>Х(Z6)+, РеакСопр. Направление Вперед</Description>
+                                   <ForeignId>1363</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.050</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26554">
+                                   <Name>RЕ(Z6) Ф-ЗЕМ</Name>
+                                   <Description>RЕ(Z6), Сопротивление для повр. Ф-З</Description>
+                                   <ForeignId>1364</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.050</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26553">
+                                   <Name>Х(Z6)-</Name>
+                                   <Description>Х(Z6)-, РеакСопр. Направление Назад</Description>
+                                   <ForeignId>1366</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.050</Value>
+                                   <MinValue>0.050</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter></Block>
+                    </Block>
+               
+                    <Block Id="FG20">
+                         <Name>КачанияМощности</Name>
+                         <Description>Качания Мощности</Description>
+                         <Block Id="SP1">
+                              <Name/>
+                              <Description/>
+                              <Parameter Id="PID_25850">
+                                   <Name>КачМощ Реж Раб</Name>
+                                   <Description>Качания Мощности Режим работы</Description>
+                                   <ForeignId>2002</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12576">все ступени блокированы</EnumValue>
+                                        <EnumValue EnumId="TXT_12577">Z1/Z1В блокированы</EnumValue>
+                                        <EnumValue EnumId="TXT_12578">&gt;= Z2 блокированы</EnumValue>
+                                        <EnumValue EnumId="TXT_12603">Z1, Z1В, Z2 блокированы</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12603</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25853">
+                                   <Name>Откл Кач Мощн</Name>
+                                   <Description>Отключение при качаниях мощности</Description>
+                                   <ForeignId>2006</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                         </Block></Block>
+               
+                    <Block Id="FG22">
+                         <Name>ПрямПередОткл</Name>
+                         <Description>Прямая Передача Отключения</Description>
+                         <Block Id="SP1">
+                              <Name/>
+                              <Description/>
+                              <Parameter Id="PID_25650">
+                                   <Name>Ф-я ПрямПерОткл</Name>
+                                   <Description>Ф-я Прямой Передачи Отключения (ППО)</Description>
+                                   <ForeignId>2201</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_22">ВКЛ</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_22</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25651">
+                                   <Name>Т Откл Выд</Name>
+                                   <Description>Отключение Выдержка Времени</Description>
+                                   <ForeignId>2202</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                         </Block></Block>
+               
+                    <Block Id="FG24">
+                         <Name>ОткПриВклНаКЗ</Name>
+                         <Description>Мгнов.отключение при вкл.на КЗ</Description>
+                         <Block Id="SP1">
+                              <Name/>
+                              <Description/>
+                              <Parameter Id="PID_25100">
+                                   <Name>МгнОткл на КЗ</Name>
+                                   <Description>Ф-я Мгн.откл.при включ. на КЗ является</Description>
+                                   <ForeignId>2401</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_22">ВКЛ</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_22</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25102">
+                                   <Name>I&gt;&gt;&gt;</Name>
+                                   <Description>Уставка по току I&gt;&gt;&gt;</Description>
+                                   <ForeignId>2404</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>1.40</Value>
+                                   <MinValue>0.10</MinValue>
+                                   <MaxValue>25.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                         </Block></Block>
+               
+                    <Block Id="FG26">
+                         <Name>Резервная МТЗ</Name>
+                         <Description>Резервная МТЗ</Description>
+                         <Block Id="SP1">
+                              <Name>Общее</Name>
+                              <Description>Общее</Description>
+                              <Parameter Id="PID_25550">
+                                   <Name>Режим работы</Name>
+                                   <Description>Режим работы</Description>
+                                   <ForeignId>2601</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25108">ВКЛ: акт.только при потер. напряжения ТН</EnumValue>
+                                        <EnumValue EnumId="TXT_25237">ВКЛ: всегда активна</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25108</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25602">
+                                   <Name>Т Вкл на КЗ</Name>
+                                   <Description>Выдержка Отключения после вкл.на КЗ</Description>
+                                   <ForeignId>2680</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>30.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                         </Block>
+                         <Block Id="SP2">
+                              <Name>I&gt;&gt;</Name>
+                              <Description>I&gt;&gt;</Description>
+                              <Parameter Id="PID_25551">
+                                   <Name>Iф&gt;&gt;</Name>
+                                   <Description>Уставка по току Iф&gt;&gt;</Description>
+                                   <ForeignId>2610</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>50.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25552">
+                                   <Name>Т Iф&gt;&gt;</Name>
+                                   <Description>Т Iф&gt;&gt; Выдержка времени</Description>
+                                   <ForeignId>2611</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25553">
+                                   <Name>3I0&gt;&gt; Пуск</Name>
+                                   <Description>Уставка по току 3I0&gt;&gt;</Description>
+                                   <ForeignId>2612</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.55</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>25.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25554">
+                                   <Name>Т 3I0&gt;&gt;</Name>
+                                   <Description>Т 3I0&gt;&gt; Выдержка времени</Description>
+                                   <ForeignId>2613</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.50</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25555">
+                                   <Name>I&gt;&gt; Телеуск</Name>
+                                   <Description>Мгновенное откл Телеуск/Диск. вход</Description>
+                                   <ForeignId>2614</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25556">
+                                   <Name>I&gt;&gt; ОткПриВклКЗ</Name>
+                                   <Description>Мгновенное откл. при вкл.на КЗ</Description>
+                                   <ForeignId>2615</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP3">
+                              <Name>I&gt;</Name>
+                              <Description>I&gt;</Description>
+                              <Parameter Id="PID_25561">
+                                   <Name>Iф&gt;</Name>
+                                   <Description>Уставка по току Iф&gt;</Description>
+                                   <ForeignId>2620</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>50.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25562">
+                                   <Name>Т Iф&gt;</Name>
+                                   <Description>Т Iф&gt; Выдержка времени</Description>
+                                   <ForeignId>2621</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25563">
+                                   <Name>3I0&gt;</Name>
+                                   <Description>Уставка по току 3I0&gt;</Description>
+                                   <ForeignId>2622</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>25.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25564">
+                                   <Name>Т 3I0&gt;</Name>
+                                   <Description>Т 3I0&gt; Выдержка времени</Description>
+                                   <ForeignId>2623</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25565">
+                                   <Name>I&gt; Телеуск</Name>
+                                   <Description>Мгновенное откл Телеуск/Диск. вход</Description>
+                                   <ForeignId>2624</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25566">
+                                   <Name>I&gt; ОткПриВклКЗ</Name>
+                                   <Description>Мгновенное откл. при вкл.на КЗ</Description>
+                                   <ForeignId>2625</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP4">
+                              <Name>МТЗ с ИВВ</Name>
+                              <Description>МТЗ с ИВВ</Description>
+                              <Parameter Id="PID_25580">
+                                   <Name>Iр&gt;</Name>
+                                   <Description>Уставка по току Iр&gt;</Description>
+                                   <ForeignId>2640</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.10</MinValue>
+                                   <MaxValue>4.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25582">
+                                   <Name>Т Iр Уст.по Вр</Name>
+                                   <Description>Т Iр Уставка по Времени</Description>
+                                   <ForeignId>2642</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>3.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25595">
+                                   <Name>Т Iр Дополн</Name>
+                                   <Description>Т Iр Дополнительная Выдержка времени</Description>
+                                   <ForeignId>2646</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>30.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25586">
+                                   <Name>3I0р Пуск</Name>
+                                   <Description>Уставка по току 3I0р</Description>
+                                   <ForeignId>2650</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>4.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25588">
+                                   <Name>Т 3I0рУст.по Вр</Name>
+                                   <Description>Т 3I0р Уставка по Времени</Description>
+                                   <ForeignId>2652</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>3.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25596">
+                                   <Name>Т 3I0р Дополн</Name>
+                                   <Description>Т 3I0р Дополнительная Выдержка Времени</Description>
+                                   <ForeignId>2656</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>30.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25592">
+                                   <Name>МЭК характ</Name>
+                                   <Description>МЭК характеристика</Description>
+                                   <ForeignId>2660</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12559">Нормально-инверсная</EnumValue>
+                                        <EnumValue EnumId="TXT_12560">Сильно-инверсная</EnumValue>
+                                        <EnumValue EnumId="TXT_12561">Предельно-инверсная</EnumValue>
+                                        <EnumValue EnumId="TXT_25126">Длительно инверсная</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12559</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25600">
+                                   <Name>I(3I0)ф Телеуск</Name>
+                                   <Description>Мгновенное откл Телеуск/Диск. вход</Description>
+                                   <ForeignId>2670</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25601">
+                                   <Name>I(3I0)фОтПрВкКЗ</Name>
+                                   <Description>Мгновенное откл. при вкл.на КЗ</Description>
+                                   <ForeignId>2671</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP5">
+                              <Name>МТЗ &gt;&gt;&gt;</Name>
+                              <Description>МТЗ &gt;&gt;&gt;</Description>
+                              <Parameter Id="PID_25571">
+                                   <Name>Iф&gt;ЗащКонцПрис</Name>
+                                   <Description>Iф&gt; Пуск Защ.отКЗ на конце прис</Description>
+                                   <ForeignId>2630</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>50.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25572">
+                                   <Name>Т IфЗащКонцПрис</Name>
+                                   <Description>Т Iф Выд.вр.ПускЗащ.отКЗ на конце прис</Description>
+                                   <ForeignId>2631</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25573">
+                                   <Name>3I0&gt;СрЗКонПрис</Name>
+                                   <Description>3I0&gt; Пуск защ.отКЗ на конце прис</Description>
+                                   <ForeignId>2632</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>25.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25574">
+                                   <Name>Т 3I0ЗащКонцПри</Name>
+                                   <Description>Т 3I0 Зад.вр.ПускЗащ.отКЗ на конце прис</Description>
+                                   <ForeignId>2633</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25575">
+                                   <Name>I&gt;&gt;&gt;мгнов</Name>
+                                   <Description>Мгновенное откл. через Телеуск/Дис.Вх.</Description>
+                                   <ForeignId>2634</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25576">
+                                   <Name>I&gt;&gt;&gt;мгн ОткВкКЗ</Name>
+                                   <Description>Мгновенное откл. при вкл.на КЗ</Description>
+                                   <ForeignId>2635</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter></Block>
+                    </Block>
+               
+                    <Block Id="FG29">
+                         <Name>Контроль Измер.</Name>
+                         <Description>Контроль измеряемых величин</Description>
+                         <Block Id="SP1">
+                              <Name>Симетр/Сумма</Name>
+                              <Description>Симетр/Сумма</Description>
+                              <Parameter Id="PID_20017">
+                                   <Name>Контр Измерений</Name>
+                                   <Description>Контроль измеряемых величин</Description>
+                                   <ForeignId>2901</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_22">ВКЛ</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_22</Value>
+                              </Parameter>
+                              <Parameter Id="PID_20208">
+                                   <Name>Симм.U ПорогПск</Name>
+                                   <Description>Симметрия напряжений: порог срабатывания</Description>
+                                   <ForeignId>2902A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>50</Value>
+                                   <MinValue>10</MinValue>
+                                   <MaxValue>100</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_20209">
+                                   <Name>Симм.U КрутХар</Name>
+                                   <Description>Симметрия напряжений: крутизна характер.</Description>
+                                   <ForeignId>2903A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.75</Value>
+                                   <MinValue>0.58</MinValue>
+                                   <MaxValue>0.95</MaxValue>
+                                   <Unit DecimalPlaces="2"/>
+                              </Parameter>
+                              <Parameter Id="PID_20210">
+                                   <Name>Симм.I ПорогПск</Name>
+                                   <Description>Симметрия тока: порог срабатывания</Description>
+                                   <ForeignId>2904A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.10</Value>
+                                   <MinValue>0.10</MinValue>
+                                   <MaxValue>1.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_20211">
+                                   <Name>Симм.I Крут Хар</Name>
+                                   <Description>Симметрия тока: крутизна характеристики</Description>
+                                   <ForeignId>2905A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.50</Value>
+                                   <MinValue>0.10</MinValue>
+                                   <MaxValue>0.95</MaxValue>
+                                   <Unit DecimalPlaces="2"/>
+                              </Parameter>
+                              <Parameter Id="PID_20212">
+                                   <Name>Сум I ПорогПуск</Name>
+                                   <Description>Сумма токов: порог срабатывания</Description>
+                                   <ForeignId>2906A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.10</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>2.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_20213">
+                                   <Name>Сум I КрутХарак</Name>
+                                   <Description>Сумма токов: крутизна характеристики</Description>
+                                   <ForeignId>2907A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.10</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>0.95</MaxValue>
+                                   <Unit DecimalPlaces="2"/>
+                              </Parameter>
+                              <Parameter Id="PID_26461">
+                                   <Name>Т сим Uпред</Name>
+                                   <Description>Симетр Uф: выдержка времени</Description>
+                                   <ForeignId>2908A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>9</Value>
+                                   <MinValue>5</MinValue>
+                                   <MaxValue>100</MaxValue>
+                                   <Unit DecimalPlaces="0">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26460">
+                                   <Name>Т сим Iпред</Name>
+                                   <Description>Симетр Iф: выдержка времени</Description>
+                                   <ForeignId>2909A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>9</Value>
+                                   <MinValue>5</MinValue>
+                                   <MaxValue>100</MaxValue>
+                                   <Unit DecimalPlaces="0">сек</Unit>
+                              </Parameter>
+                         </Block>
+                         <Block Id="SP2">
+                              <Name>БлокНеиспЦеп U</Name>
+                              <Description>БлокНеиспЦеп U</Description>
+                              <Parameter Id="PID_25800">
+                                   <Name>БНН</Name>
+                                   <Description>Блокировка неиспр цепей напряжения</Description>
+                                   <ForeignId>2910</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_22">ВКЛ</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_22</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25801">
+                                   <Name>БНН U&gt;</Name>
+                                   <Description>Порог напряжения U&gt; для БНН</Description>
+                                   <ForeignId>2911A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>15</Value>
+                                   <MinValue>10</MinValue>
+                                   <MaxValue>100</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25802">
+                                   <Name>БНН I&lt;</Name>
+                                   <Description>Порог тока I&lt;</Description>
+                                   <ForeignId>2912A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.10</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>1.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25803">
+                                   <Name>БНН U&lt; (3ф)</Name>
+                                   <Description>Порог напряжения U&lt; (3ф) для БНН</Description>
+                                   <ForeignId>2913A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>15</Value>
+                                   <MinValue>2</MinValue>
+                                   <MaxValue>100</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25804">
+                                   <Name>БНН Iдельта(3ф)</Name>
+                                   <Description>Порог ДельтаТока (3ф)</Description>
+                                   <ForeignId>2914A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.10</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>1.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25806">
+                                   <Name>Контр БНН</Name>
+                                   <Description>Контроль БНН</Description>
+                                   <ForeignId>2915</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25230">с контролем тока</EnumValue>
+                                        <EnumValue EnumId="TXT_25231">с контролем тока и бл-контактов сил.вык.</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25231</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25805">
+                                   <Name>Т БНН</Name>
+                                   <Description>Выдержка Врем Контроля БНН</Description>
+                                   <ForeignId>2916A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.05</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP3">
+                              <Name>Автомат ТН</Name>
+                              <Description>Автомат ТН</Description>
+                              <Parameter Id="PID_26127">
+                                   <Name>Т выкл ТН</Name>
+                                   <Description>Время работы автомата защиты цепей ТН</Description>
+                                   <ForeignId>2921</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0</Value>
+                                   <MinValue>0</MinValue>
+                                   <MaxValue>30</MaxValue>
+                                   <Unit DecimalPlaces="0">м сек</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP4">
+                              <Name>Угол нагрузки</Name>
+                              <Description>Угол нагрузки</Description>
+                              <Parameter Id="PID_25816">
+                                   <Name>?А</Name>
+                                   <Description>Предел уставки фиА</Description>
+                                   <ForeignId>2941</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>200</Value>
+                                   <MinValue>0</MinValue>
+                                   <MaxValue>359</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25817">
+                                   <Name>?В</Name>
+                                   <Description>Предел уставки фиВ</Description>
+                                   <ForeignId>2942</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>340</Value>
+                                   <MinValue>0</MinValue>
+                                   <MaxValue>359</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25818">
+                                   <Name>I1&gt;</Name>
+                                   <Description>Минимальное значение I1&gt;</Description>
+                                   <ForeignId>2943</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.06</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>2.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25819">
+                                   <Name>U1&gt;</Name>
+                                   <Description>Минимальное значение U1&gt;</Description>
+                                   <ForeignId>2944</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>20</Value>
+                                   <MinValue>2</MinValue>
+                                   <MaxValue>70</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter></Block>
+                    </Block>
+               
+                    <Block Id="FG31">
+                         <Name>ТЗНП</Name>
+                         <Description>ТЗНП</Description>
+                         <Block Id="SP1">
+                              <Name>Общее</Name>
+                              <Description>Общее</Description>
+                              <Parameter Id="PID_25250">
+                                   <Name>Функ ТЗНП Явл</Name>
+                                   <Description>Функция ТЗНП является</Description>
+                                   <ForeignId>3101</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_22">ВКЛ</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_22</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25251">
+                                   <Name>БлокТЗНП для ДЗ</Name>
+                                   <Description>Блокировать ТЗНП для ДистЗащиты</Description>
+                                   <ForeignId>3102</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25109">при каждом пуске дист защиты</EnumValue>
+                                        <EnumValue EnumId="TXT_25110">при однофазном пуске дист защиты</EnumValue>
+                                        <EnumValue EnumId="TXT_25111">при многофазном пуске дист защиты</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25320">
+                                   <Name>БлкТЗНПприРабДЗ</Name>
+                                   <Description>Блокировать ТЗНП при пуске ДЗ</Description>
+                                   <ForeignId>3174</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12520">в ступени Z1</EnumValue>
+                                        <EnumValue EnumId="TXT_12521">в ступенях Z1/Z1В</EnumValue>
+                                        <EnumValue EnumId="TXT_12522">в каждой ступени</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12520</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25253">
+                                   <Name>Iф-СТАБ Наклон</Name>
+                                   <Description>Наклон характеристики Стабилизации Iфаз</Description>
+                                   <ForeignId>3104A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0</Value>
+                                   <MinValue>0</MinValue>
+                                   <MaxValue>30</MaxValue>
+                                   <Unit DecimalPlaces="0">%</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25308">
+                                   <Name>2я гармБрТока</Name>
+                                   <Description>коэфф 2й гарм.при защите от броска тока</Description>
+                                   <ForeignId>3170</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>15</Value>
+                                   <MinValue>10</MinValue>
+                                   <MaxValue>45</MaxValue>
+                                   <Unit DecimalPlaces="0">%</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25309">
+                                   <Name>Iмах Деблок БрТ</Name>
+                                   <Description>Iмах для деблокировки функц. броска тока</Description>
+                                   <ForeignId>3171</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>7.50</Value>
+                                   <MinValue>0.50</MinValue>
+                                   <MaxValue>25.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25310">
+                                   <Name>Реж Вкл на КЗ</Name>
+                                   <Description>Мгновен. отключение после включ. на КЗ</Description>
+                                   <ForeignId>3172</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12518">при Пуске (ненаправл.)</EnumValue>
+                                        <EnumValue EnumId="TXT_25132">Пуск и направление</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25132</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25311">
+                                   <Name>Т Вкл на КЗ</Name>
+                                   <Description>Выдержка времени Отключ.после вкл.на КЗ</Description>
+                                   <ForeignId>3173</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                         </Block>
+                         <Block Id="SP2">
+                              <Name>3I0 &gt;&gt;&gt;</Name>
+                              <Description>3I0 &gt;&gt;&gt;</Description>
+                              <Parameter Id="PID_25262">
+                                   <Name>Реж Раб 3I0&gt;&gt;&gt;</Name>
+                                   <Description>Режим работы</Description>
+                                   <ForeignId>3110</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12514">В прямом направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12515">В обратном направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12516">Ненаправленное</EnumValue>
+                                        <EnumValue EnumId="TXT_12656">Неактивный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12514</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25260">
+                                   <Name>3I0&gt;&gt;&gt;</Name>
+                                   <Description>Уставка по току 3I0&gt;&gt;&gt;</Description>
+                                   <ForeignId>3111</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.70</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>25.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25261">
+                                   <Name>Т 3I0&gt;&gt;&gt;</Name>
+                                   <Description>Т 3I0&gt;&gt;&gt; Выдежка времени</Description>
+                                   <ForeignId>3112</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25263">
+                                   <Name>3I0&gt;&gt;&gt; Телеуск</Name>
+                                   <Description>Мгновенное откл Телеуск/Диск. вход</Description>
+                                   <ForeignId>3113</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25264">
+                                   <Name>3I0&gt;&gt;&gt;МгОткВкКЗ</Name>
+                                   <Description>Мгновенное откл. при вкл. на КЗ</Description>
+                                   <ForeignId>3114</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25265">
+                                   <Name>3I0&gt;&gt;&gt;Брос:Блок</Name>
+                                   <Description>Блокировка защиты от броска тока</Description>
+                                   <ForeignId>3115</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP3">
+                              <Name>3I0 &gt;&gt;</Name>
+                              <Description>3I0 &gt;&gt;</Description>
+                              <Parameter Id="PID_25272">
+                                   <Name>Реж Раб 3I0&gt;&gt;</Name>
+                                   <Description>Режим работы</Description>
+                                   <ForeignId>3120</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12514">В прямом направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12515">В обратном направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12516">Ненаправленное</EnumValue>
+                                        <EnumValue EnumId="TXT_12656">Неактивный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12514</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25270">
+                                   <Name>3I0&gt;&gt;</Name>
+                                   <Description>Уставка по току 3I0&gt;&gt;</Description>
+                                   <ForeignId>3121</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.30</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>25.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25271">
+                                   <Name>Т 3I0&gt;&gt;</Name>
+                                   <Description>Т 3I0&gt;&gt; Выдержка Времени</Description>
+                                   <ForeignId>3122</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>1.10</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25273">
+                                   <Name>3I0&gt;&gt; Телеуск</Name>
+                                   <Description>Мгновенное откл Телеуск/Диск. вход</Description>
+                                   <ForeignId>3123</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25274">
+                                   <Name>3I0&gt;&gt;МгОткВкКЗ</Name>
+                                   <Description>Мгновенное откл. при вкл. на КЗ</Description>
+                                   <ForeignId>3124</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25275">
+                                   <Name>3I0&gt;&gt;Брос:Блок</Name>
+                                   <Description>Блокировка защиты от броска тока</Description>
+                                   <ForeignId>3125</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP4">
+                              <Name>3I0 &gt;</Name>
+                              <Description>3I0 &gt;</Description>
+                              <Parameter Id="PID_25282">
+                                   <Name>Реж Раб 3I0&gt;</Name>
+                                   <Description>Режим работы</Description>
+                                   <ForeignId>3130</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12514">В прямом направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12515">В обратном направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12516">Ненаправленное</EnumValue>
+                                        <EnumValue EnumId="TXT_12656">Неактивный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12514</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25280">
+                                   <Name>3I0&gt;</Name>
+                                   <Description>3I0&gt; Пуск</Description>
+                                   <ForeignId>3131</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.16</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>25.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25281">
+                                   <Name>Т 3I0&gt;</Name>
+                                   <Description>Т 3I0&gt; Выдержка Времени</Description>
+                                   <ForeignId>3132</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>2.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25283">
+                                   <Name>3I0&gt; Телеуск</Name>
+                                   <Description>Мгновенное откл Телеуск/Диск. вход</Description>
+                                   <ForeignId>3133</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25284">
+                                   <Name>3I0&gt;МгОткВкКЗ</Name>
+                                   <Description>Мгновенное откл. при вкл. на КЗ</Description>
+                                   <ForeignId>3134</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25285">
+                                   <Name>3I0&gt;Брос:Блок</Name>
+                                   <Description>Блокировка защиты от броска тока</Description>
+                                   <ForeignId>3135</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25</Value>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP5">
+                              <Name>3I0 4 ступень</Name>
+                              <Description>3I0 4 ступень</Description>
+                              <Parameter Id="PID_25293">
+                                   <Name>Реж Раб 3I0р</Name>
+                                   <Description>Режим работы</Description>
+                                   <ForeignId>3140</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12514">В прямом направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12515">В обратном направлении</EnumValue>
+                                        <EnumValue EnumId="TXT_12516">Ненаправленное</EnumValue>
+                                        <EnumValue EnumId="TXT_12656">Неактивный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12516</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25290">
+                                   <Name>3I0р Пуск</Name>
+                                   <Description>3I0р Пуск</Description>
+                                   <ForeignId>3141</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.08</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>25.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25316">
+                                   <Name>ДопВыдВремени</Name>
+                                   <Description>Дополнительная Выдержка времени</Description>
+                                   <ForeignId>3147</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>4.20</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25294">
+                                   <Name>3I0р Телеуск</Name>
+                                   <Description>Мгновенное откл Телеуск/Диск. вход</Description>
+                                   <ForeignId>3148</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25295">
+                                   <Name>3I0рМгнОткВклКЗ</Name>
+                                   <Description>Мгновенное откл. при вкл. на КЗ</Description>
+                                   <ForeignId>3149</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25296">
+                                   <Name>3I0рБрос: Блк</Name>
+                                   <Description>Блокировка защиты от броска тока</Description>
+                                   <ForeignId>3150</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25</Value>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP8">
+                              <Name>Направление</Name>
+                              <Description>Направление</Description>
+                              <Parameter Id="PID_25300">
+                                   <Name>Поляризация</Name>
+                                   <Description>Поляризация</Description>
+                                   <ForeignId>3160</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25131">с U0 + IЕ или U2</EnumValue>
+                                        <EnumValue EnumId="TXT_25128">с U0 + IЕ</EnumValue>
+                                        <EnumValue EnumId="TXT_25129">с IЕ (Нейтраль)</EnumValue>
+                                        <EnumValue EnumId="TXT_25130">с U2 и I2 (обратная последовательность)</EnumValue>
+                                        <EnumValue EnumId="TXT_25246">мощностью нул.посл.</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25246</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25302">
+                                   <Name>Направл Уг ?</Name>
+                                   <Description>АЛЬФА, нижний порог угол для напр вперед</Description>
+                                   <ForeignId>3162A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>338</Value>
+                                   <MinValue>0</MinValue>
+                                   <MaxValue>360</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25303">
+                                   <Name>Направл Уг БЕТА</Name>
+                                   <Description>БЕТА, верхний порог угол для напр вперед</Description>
+                                   <ForeignId>3163A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>122</Value>
+                                   <MinValue>0</MinValue>
+                                   <MaxValue>360</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25304">
+                                   <Name>3U0&gt;</Name>
+                                   <Description>Мин. напряжение нул.посл. 3U0 поляриз.</Description>
+                                   <ForeignId>3164</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>3.0</Value>
+                                   <MinValue>0.5</MinValue>
+                                   <MaxValue>10.0</MaxValue>
+                                   <Unit DecimalPlaces="1">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25306">
+                                   <Name>3U2&gt;</Name>
+                                   <Description>Мин. напряжение поляризации обр.посл.3U2</Description>
+                                   <ForeignId>3166</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.5</Value>
+                                   <MinValue>0.5</MinValue>
+                                   <MaxValue>10.0</MaxValue>
+                                   <Unit DecimalPlaces="1">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25307">
+                                   <Name>3I2&gt;</Name>
+                                   <Description>Мин. ток поляризации обр.посл. 3I2</Description>
+                                   <ForeignId>3167</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.06</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>1.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25323">
+                                   <Name>? комп</Name>
+                                   <Description>Угол компенсации для Sокомп</Description>
+                                   <ForeignId>3168</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>255</Value>
+                                   <MinValue>0</MinValue>
+                                   <MaxValue>360</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25324">
+                                   <Name>S вперед</Name>
+                                   <Description>Порог.знач.мощности Sокомп в прямом напр</Description>
+                                   <ForeignId>3169</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>1.4</Value>
+                                   <MinValue>0.1</MinValue>
+                                   <MaxValue>10.0</MaxValue>
+                                   <Unit DecimalPlaces="1">ВА</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25338">
+                                   <Name>3U0&lt; вперед</Name>
+                                   <Description>3U0 мин. для поврежд. в прямом напр.</Description>
+                                   <ForeignId>3186A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.0</Value>
+                                   <MinValue>0.1</MinValue>
+                                   <MaxValue>10.0</MaxValue>
+                                   <Unit DecimalPlaces="1">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25339">
+                                   <Name>Хпосл_конд</Name>
+                                   <Description>Реакт.сопр. Х послед.включ.конденсатора</Description>
+                                   <ForeignId>3187A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.000</Value>
+                                   <MinValue>0.001</MinValue>
+                                   <MaxValue>600.000</MaxValue>
+                                   <Unit DecimalPlaces="3">Ом</Unit>
+                              </Parameter></Block>
+                    </Block>
+               
+                    <Block Id="FG38">
+                         <Name>ОМП</Name>
+                         <Description>Определение места повреждения</Description>
+                         <Block Id="SP1">
+                              <Name>ОМП</Name>
+                              <Description>ОМП</Description>
+                              <Parameter Id="PID_20253">
+                                   <Name>ПУСК</Name>
+                                   <Description>Условие пуска ОМП</Description>
+                                   <ForeignId>3802</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_12553">Пуск</EnumValue>
+                                        <EnumValue EnumId="TXT_12552">Отключение</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_12552</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25061">
+                                   <Name>КомпенсНагрузки</Name>
+                                   <Description>Компенсирование нагрузки</Description>
+                                   <ForeignId>3806</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25</Value>
+                              </Parameter>
+                         
+                         </Block></Block>
+               </Block></Block>
+          <Block Id="ADD_PARAM">
+               <Name>Additional Information</Name>
+               <Description/>
+               <Block Id="GENERALINFO">
+                    <Name>General Information</Name>
+                    <Description/>
+                    <Block Id="GENERAL_INFO1">
+                         <Name>General</Name>
+                         <Description>General Information</Description>
+                         <Parameter Id="MANUFACTURER">
+                              <Name>Manufacturer</Name>
+                              <Description>Manufacturer</Description>
+                              <DataType>String</DataType>
+                              <Value>SIEMENS AG</Value>
+                         </Parameter>
+                         <Parameter Id="DEVICE_MODEL">
+                              <Name>Device Model</Name>
+                              <Description>Device Model</Description>
+                              <DataType>String</DataType>
+                              <Value>7SA522</Value>
+                         </Parameter>
+                         <Parameter Id="SERIAL_NUMBER">
+                              <Name>Serial Number</Name>
+                              <Description>Serial Number</Description>
+                              <DataType>String</DataType>
+                              <Value>V04.73.03</Value>
+                         </Parameter>
+                         <Parameter Id="HWREVISION">
+                              <Name>MLFB</Name>
+                              <Description>MLFB DIGSI</Description>
+                              <DataType>String</DataType>
+                              <Value>7SA52216DB920HA4----0R----------</Value>
+                         </Parameter>
+                    
+                    
+                    </Block></Block></Block>
+     </CUSTOM>
+     <RIO Type="RIOBlock" BlockType="RIO">
+          <Name>RIO</Name>
+          <Description/>
+          <DEVICE Type="RIOBlock" BlockType="DEVICE">
+               <NAMEPLATE Type="RIOBlock" BlockType="DEVICE_NAMEPLATE">
+                    <DEVICE_MODEL Type="Parameter">
+                         <Value/>
+                    </DEVICE_MODEL>
+                    <MANUFACTURER Type="Parameter">
+                         <Value/>
+                    </MANUFACTURER>
+                    <DEVICE_TYPE Type="Parameter">
+                         <Value/>
+                    </DEVICE_TYPE>
+                    <SERIALNR Type="Parameter">
+                         <Value/>
+                    </SERIALNR>
+                    <ADDITIONAL_INFO2 Type="Parameter">
+                         <Value/>
+                    </ADDITIONAL_INFO2>
+               </NAMEPLATE>
+               <LOCATION Type="RIOBlock" BlockType="DEVICE_LOCATION">
+                    <DEVICE_ADDRESS Type="Parameter">
+                         <Value/>
+                    </DEVICE_ADDRESS>
+                    <SUBSTATION Type="Parameter">
+                         <Value/>
+                    </SUBSTATION>
+                    <SUBSTATION_ADDRESS Type="Parameter">
+                         <Value/>
+                    </SUBSTATION_ADDRESS>
+                    <BAY Type="Parameter">
+                         <Value/>
+                    </BAY>
+                    <BAY_ADDRESS Type="Parameter">
+                         <Value/>
+                    </BAY_ADDRESS>
+                    <PROTECTED_OBJECT_NAME Type="Parameter">
+                         <Value/>
+                    </PROTECTED_OBJECT_NAME>
+               </LOCATION>
+               <NOMINALVALUES Type="RIOBlock" BlockType="DEVICE_NOMINALVALUES">
+                    <PHASES Type="Parameter">
+                         <Value>3</Value>
+                    </PHASES>
+                    <FNOM Type="Parameter">
+                         <Value>50</Value>
+                    </FNOM>
+                    <VNOM Type="Parameter">
+                         <Value>100</Value>
+                    </VNOM>
+                    <VPRIM_LL Type="Parameter">
+                         <Value>110000</Value>
+                    </VPRIM_LL>
+                    <INOM Type="Parameter">
+                         <Value>1</Value>
+                    </INOM>
+                    <IPRIM Type="Parameter">
+                         <Value>1000</Value>
+                    </IPRIM>
+               </NOMINALVALUES>
+               <RESIDUALFACTORS Type="RIOBlock" BlockType="DEVICE_RESIDUALFACTORS">
+                    <VLNVN Type="Parameter">
+                         <Value>1.732</Value>
+                    </VLNVN>
+                    <ININOM Type="Parameter">
+                         <Value>1</Value>
+                    </ININOM>
+               </RESIDUALFACTORS>
+               <LIMITS Type="RIOBlock" BlockType="DEVICE_LIMITS">
+                    <VMAX_LL Type="Parameter">
+                         <Value>200</Value>
+                    </VMAX_LL>
+                    <IMAX Type="Parameter">
+                         <Value>50</Value>
+                    </IMAX>
+               </LIMITS>
+               <MISC Type="RIOBlock" BlockType="DEVICE_MISC">
+                    <DEBOUNCETIME Type="Parameter">
+                         <Value>0.003</Value>
+                    </DEBOUNCETIME>
+                    <DEGLITCHTIME Type="Parameter">
+                         <Value>0</Value>
+                    </DEGLITCHTIME>
+                    <OVERLOADSUPTIME Type="Parameter">
+                         <Value>0.05</Value>
+                    </OVERLOADSUPTIME>
+               </MISC>
+          </DEVICE>
+     </RIO>
+</XRio>

@@ -1,0 +1,6 @@
+DIGSI readable validation report
+========================================
+missing_in_xml: 0
+missing_in_xrio: 0
+value_mismatch: 0
+datatype_mismatch: 0

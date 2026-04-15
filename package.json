@@ -5,10 +5,13 @@
   "main": "compare_tool.js",
   "bin": "compare_tool.js",
   "scripts": {
-    "build": "pkg compare_tool.js --target node18-win-x64 --output compare_tool.exe"
+    "build": "pkg compare_tool.js --target node18-win-x64 --output compare_tool.exe",
+    "build:pipeline": "pkg pipeline.js --target node18-win-x64 --output pipeline.exe"
   },
   "pkg": {
-    "targets": ["node18-win-x64"],
+    "targets": [
+      "node18-win-x64"
+    ],
     "outputPath": "."
   },
   "repository": {
@@ -19,5 +22,8 @@
   "dependencies": {
     "adm-zip": "^0.5.17",
     "fast-xml-parser": "^5.5.11"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
   }
 }

@@ -1,0 +1,30 @@
+{
+  "generated_at_utc": "2026-04-15T05:38:44.931713+00:00",
+  "results": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "returncode": 0,
+      "log": "artifacts/python_-m_unittest.log"
+    },
+    {
+      "command": [
+        "python",
+        "digsi_readable.py",
+        "Примеры",
+        "-o",
+        "artifacts/integration_out",
+        "--report"
+      ],
+      "returncode": 0,
+      "log": "artifacts/python_digsi_readable.py_Примеры.log"
+    }
+  ]
+}

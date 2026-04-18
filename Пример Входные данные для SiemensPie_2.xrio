@@ -1,0 +1,1821 @@
+<XRio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+     <Version>1.0.0</Version>
+     <Language>ru</Language>
+     <RioConverter>
+          <Properties>
+               <Revision>1</Revision>
+               <ChangeDate>2019-06-28</ChangeDate>
+               <Author>SIEMENS AG</Author>
+          </Properties>
+          <ScriptReferences/>
+          <Script/>
+     </RioConverter>
+     <CUSTOM>
+          <Name>6MD664 - Converter</Name>
+          <Description>User defined relay parameters</Description>
+          <Block Id="SETTINGS">
+               <Name>Relay Parameter Section</Name>
+               <Description/>
+               <Block Id="DC">
+                    <Name>Конфигурация устройства</Name>
+                    <Description>Конфигурация устройства</Description>
+                    <Parameter Id="PID_16611">
+                         <Name>Переключ Группы</Name>
+                         <Description>Опция переключения группы уставок</Description>
+                         <ForeignId>0103</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27121">
+                         <Name>Изм U_1</Name>
+                         <Description>Измерение U</Description>
+                         <ForeignId>0x2000016769F1</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27122">
+                         <Name>Изм I_1</Name>
+                         <Description>Измерение I</Description>
+                         <ForeignId>0x2000016769F2</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27123">
+                         <Name>Изм 1ф_1</Name>
+                         <Description>Однофазное измерение, группа измерений 1</Description>
+                         <ForeignId>0x2000016769F3</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27124">
+                         <Name>Изм 1ф_2</Name>
+                         <Description>Однофазное измерение, группа измерений 2</Description>
+                         <ForeignId>0x2000016769F4</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27125">
+                         <Name>Изм 1ф_3</Name>
+                         <Description>Однофазное измерение, группа измерений 3</Description>
+                         <ForeignId>0x2000016769F5</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27126">
+                         <Name>Изм 3ф_1</Name>
+                         <Description>Трехфазное измерение, группа измерений 1</Description>
+                         <ForeignId>0x2000016769F6</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27127">
+                         <Name>Изм по сх.Арона</Name>
+                         <Description>Измер по схем.2Ваттметров,группа измер.1</Description>
+                         <ForeignId>0x2000016769F7</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27101">
+                         <Name>ФункцСинхрон 1</Name>
+                         <Description>Функция синхронизации 1</Description>
+                         <ForeignId>0x2000016769DD</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27102">
+                         <Name>ФункцСинхрон 2</Name>
+                         <Description>Функция синхронизации 2</Description>
+                         <ForeignId>0x2000016769DE</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27103">
+                         <Name>ФункцСинхрон 3</Name>
+                         <Description>Функция синхронизации 3</Description>
+                         <ForeignId>0x2000016769DF</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27104">
+                         <Name>ФункцСинхрон 4</Name>
+                         <Description>Функция синхронизации 4</Description>
+                         <ForeignId>0x2000016769E0</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27105">
+                         <Name>ФункцСинхрон 5</Name>
+                         <Description>Функция синхронизации 5</Description>
+                         <ForeignId>0x2000016769E1</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_7</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27106">
+                         <Name>ФункцСинхрон 6</Name>
+                         <Description>Функция синхронизации 6</Description>
+                         <ForeignId>0x2000016769E2</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27107">
+                         <Name>ФункцСинхрон 7</Name>
+                         <Description>Функция синхронизации 7</Description>
+                         <ForeignId>0x2000016769E3</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+                    <Parameter Id="PID_27108">
+                         <Name>ФункцСинхрон 8</Name>
+                         <Description>Функция синхронизации 8</Description>
+                         <ForeignId>0x2000016769E4</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+                    <Parameter Id="PID_16390">
+                         <Name>Режим Пускат</Name>
+                         <Description>Режим срабатывания</Description>
+                         <ForeignId>0110</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_25278">только 3 фазный</EnumValue>
+                              <EnumValue EnumId="TXT_25279">1-/3ф</EnumValue>
+                         </EnumList>
+                         <Value>TXT_25278</Value>
+                    </Parameter>
+                    <Parameter Id="PID_20041">
+                         <Name>АПВ</Name>
+                         <Description>Автоматическое повторное включение</Description>
+                         <ForeignId>0133</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_25175">1 АПВ-цикл</EnumValue>
+                              <EnumValue EnumId="TXT_25176">2 АПВ-цикла</EnumValue>
+                              <EnumValue EnumId="TXT_25177">3 АПВ-цикла</EnumValue>
+                              <EnumValue EnumId="TXT_25178">4 АПВ-цикла</EnumValue>
+                              <EnumValue EnumId="TXT_25179">5 АПВ-циклов</EnumValue>
+                              <EnumValue EnumId="TXT_25180">6 АПВ-циклов</EnumValue>
+                              <EnumValue EnumId="TXT_25181">7 АПВ-циклов</EnumValue>
+                              <EnumValue EnumId="TXT_25182">8 АПВ-циклов</EnumValue>
+                              <EnumValue EnumId="TXT_25174">Адаптивная бестоковая Пауза (АБП)</EnumValue>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_25175</Value>
+                    </Parameter>
+                    <Parameter Id="PID_26211">
+                         <Name>АПВ режим упр</Name>
+                         <Description>АПВ режим управления</Description>
+                         <ForeignId>0134</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_25211">с пуском и временем действия</EnumValue>
+                              <EnumValue EnumId="TXT_25212">с пуском без времени действия</EnumValue>
+                              <EnumValue EnumId="TXT_25213">с Отключением и временем действия</EnumValue>
+                              <EnumValue EnumId="TXT_25214">с Отключением без времени действия</EnumValue>
+                         </EnumList>
+                         <Value>TXT_25214</Value>
+                    </Parameter>
+                    <Parameter Id="PID_20044">
+                         <Name>УРОВ</Name>
+                         <Description>Устр. резерв. отказа выключателя (УРОВ)</Description>
+                         <ForeignId>0139</ForeignId>
+                         <DataType>Enumeration</DataType>
+                         <EnumList>
+                              <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                              <EnumValue EnumId="TXT_8">Введено</EnumValue>
+                         </EnumList>
+                         <Value>TXT_8</Value>
+                    </Parameter>
+               </Block>
+               <Block Id="FG0">
+                    <Name>Общие установки</Name>
+                    <Description>Общие установки утройства</Description>
+                    <Block Id="SP0">
+                         <Name>Общее</Name>
+                         <Description>Общее</Description>
+                         <Parameter Id="PID_16391">
+                              <Name>Время подсветки</Name>
+                              <Description>Время подсветки</Description>
+                              <ForeignId>0401</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>10</Value>
+                              <MinValue>1</MinValue>
+                              <MaxValue>60</MaxValue>
+                              <Unit DecimalPlaces="0">мин</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_16622">
+                              <Name>DIGSI задн.порт</Name>
+                              <Description>Задний порт для DIGSI</Description>
+                              <ForeignId>0402</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_7">Выведено</EnumValue>
+                                   <EnumValue EnumId="TXT_62">Порт С</EnumValue>
+                                   <EnumValue EnumId="TXT_63">Порт D</EnumValue>
+                              </EnumList>
+                              <Value>TXT_63</Value>
+                         </Parameter>
+                         <Parameter Id="PID_16386">
+                              <Name>ИндПовр СД/Дсп</Name>
+                              <Description>Индикация повреждений: светодиод/дисплей</Description>
+                              <ForeignId>0407</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_2055">Отображение сообщений при каждом пуске</EnumValue>
+                                   <EnumValue EnumId="TXT_2070">Отображение сообщений только при откл.</EnumValue>
+                              </EnumList>
+                              <Value>TXT_2055</Value>
+                         </Parameter>
+                         <Parameter Id="PID_26397">
+                              <Name>СпонтОтобрПовр</Name>
+                              <Description>Спонтанное отображ.сообщений о поврежд.</Description>
+                              <ForeignId>0408</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                              </EnumList>
+                              <Value>TXT_24</Value>
+                         </Parameter>
+                    </Block>
+               </Block>
+               <Block Id="FG1">
+                    <Name>Данные ЭС1</Name>
+                    <Description>Данные энергосистемы 1</Description>
+                    <Block Id="SP1">
+                         <Name>Параметры сети</Name>
+                         <Description>Параметры сети</Description>
+                         <Parameter Id="PID_20053">
+                              <Name>Uном Первич</Name>
+                              <Description>Первичное номинальное напряжение</Description>
+                              <ForeignId>0203</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>220.0</Value>
+                              <MinValue>1.0</MinValue>
+                              <MaxValue>1200.0</MaxValue>
+                              <Unit DecimalPlaces="1">кВ</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_20054">
+                              <Name>Uном Вторич</Name>
+                              <Description>Вторичное номинальное напряжение</Description>
+                              <ForeignId>0204</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>100</Value>
+                              <MinValue>80</MinValue>
+                              <MaxValue>125</MaxValue>
+                              <Unit DecimalPlaces="0">В</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_20000">
+                              <Name>Iном первич ТТ</Name>
+                              <Description>Первичный номинальный ток ТТ</Description>
+                              <ForeignId>0205</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>1000</Value>
+                              <MinValue>10</MinValue>
+                              <MaxValue>5000</MaxValue>
+                              <Unit DecimalPlaces="0">А</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_20001">
+                              <Name>Iном вротич ТТ</Name>
+                              <Description>Вторичный номинальный ток ТТ</Description>
+                              <ForeignId>0206</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_12921">1А</EnumValue>
+                                   <EnumValue EnumId="TXT_12922">5А</EnumValue>
+                              </EnumList>
+                              <Value>TXT_12921</Value>
+                         </Parameter>
+                         <Parameter Id="PID_20045">
+                              <Name>Номин Частота</Name>
+                              <Description>Номинальная частота</Description>
+                              <ForeignId>0214</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_12506">50 Гц</EnumValue>
+                                   <EnumValue EnumId="TXT_12507">60 Гц</EnumValue>
+                              </EnumList>
+                              <Value>TXT_12506</Value>
+                         </Parameter>
+                    </Block>
+                    <Block Id="SP3">
+                         <Name>Выключатель</Name>
+                         <Description>Выключатель</Description>
+                         <Parameter Id="PID_20062">
+                              <Name>Тмин Ком Откл</Name>
+                              <Description>Мин. длительность команды отключения</Description>
+                              <ForeignId>0240</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>0.10</Value>
+                              <MinValue>0.02</MinValue>
+                              <MaxValue>30.00</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_20063">
+                              <Name>Тмакс Ком Вкл</Name>
+                              <Description>Макс. длительность команды включения</Description>
+                              <ForeignId>0241</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>0.15</Value>
+                              <MinValue>0.01</MinValue>
+                              <MaxValue>30.00</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter></Block>
+               </Block>
+          
+               <Block Id="FG2">
+                    <Name>Рег Авар Реж</Name>
+                    <Description>Регистрация аварийных режимов</Description>
+                    <Block Id="SP1">
+                         <Name>Рег Авар Режим</Name>
+                         <Description>Рег Авар Режим</Description>
+                         <Parameter Id="PID_16612">
+                              <Name>Запуск Регистр</Name>
+                              <Description>Запуск регистрации повреждений</Description>
+                              <ForeignId>0901</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_9">Сохранить при пуске</EnumValue>
+                                   <EnumValue EnumId="TXT_10">Сохранить при отключении</EnumValue>
+                                   <EnumValue EnumId="TXT_11">Пуск при отключении</EnumValue>
+                              </EnumList>
+                              <Value>TXT_9</Value>
+                         </Parameter>
+                         <Parameter Id="PID_16613">
+                              <Name>Объем Регистр</Name>
+                              <Description>Объем записываемых данных</Description>
+                              <ForeignId>0902</ForeignId>
+                              <DataType>Enumeration</DataType>
+                              <EnumList>
+                                   <EnumValue EnumId="TXT_12">Повреждение</EnumValue>
+                                   <EnumValue EnumId="TXT_13">Повреждение в энергосистеме</EnumValue>
+                              </EnumList>
+                              <Value>TXT_13</Value>
+                         </Parameter>
+                         <Parameter Id="PID_16614">
+                              <Name>Макс время Рег</Name>
+                              <Description>Максимальное время записи повреждения</Description>
+                              <ForeignId>0903</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>5.00</Value>
+                              <MinValue>0.30</MinValue>
+                              <MaxValue>5.00</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_16615">
+                              <Name>Время до Нач</Name>
+                              <Description>Время записи до начала регистрации</Description>
+                              <ForeignId>0904</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>0.50</Value>
+                              <MinValue>0.05</MinValue>
+                              <MaxValue>0.50</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_16616">
+                              <Name>Врем после Повр</Name>
+                              <Description>Время записи после повреждения</Description>
+                              <ForeignId>0905</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>0.50</Value>
+                              <MinValue>0.05</MinValue>
+                              <MaxValue>0.50</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter>
+                         <Parameter Id="PID_16617">
+                              <Name>ВремяЗаписи ДВх</Name>
+                              <Description>Время записи при пуске через дискр.вход</Description>
+                              <ForeignId>0906</ForeignId>
+                              <DataType>Real</DataType>
+                              <Value>5.00</Value>
+                              <MinValue>0.10</MinValue>
+                              <MaxValue>5.00</MaxValue>
+                              <Unit DecimalPlaces="2">сек</Unit>
+                         </Parameter>
+                    </Block></Block>
+          
+               <Block Id="PG1">
+                    <Name>Группа уставок А</Name>
+                    <Description/>
+                    <Block Id="FG11">
+                         <Name>Параметры ЭС2</Name>
+                         <Description>Параметры энергосистемы 2</Description>
+                         <Block Id="SP1">
+                              <Name/>
+                              <Description/>
+                              <Parameter Id="PID_25064">
+                                   <Name>ТокРазомкФазы</Name>
+                                   <Description>Порог Тока Разомкнутой Фазы</Description>
+                                   <ForeignId>1130A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.05</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>1.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25069">
+                                   <Name>Сброс Ком.Откл.</Name>
+                                   <Description>СБРОС Команды Отключения</Description>
+                                   <ForeignId>1135</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25145">Превыш порога I остаточного</EnumValue>
+                                        <EnumValue EnumId="TXT_25146">бл-конт ВЫКЛ и I&lt; остаточный</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25145</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25051">
+                                   <Name>ДейсПослРучВкл</Name>
+                                   <Description>Продолжит.действия после РУЧН.включения</Description>
+                                   <ForeignId>1150A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.60</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                         
+                         </Block></Block>
+                    <Block Id="FG34">
+                         <Name>АПВ</Name>
+                         <Description>АПВ</Description>
+                         <Block Id="SP0">
+                              <Name>Общее</Name>
+                              <Description>Общее</Description>
+                              <Parameter Id="PID_20025">
+                                   <Name>АПВ</Name>
+                                   <Description>Автоматическое повторное включение</Description>
+                                   <ForeignId>3401</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                        <EnumValue EnumId="TXT_22">ВКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_22</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26150">
+                                   <Name>ВЫКЛ? Контроль</Name>
+                                   <Description>Опрос готовности ВЫКЛ перед 1ым откл</Description>
+                                   <ForeignId>3402</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25</Value>
+                              </Parameter>
+                              <Parameter Id="PID_20237">
+                                   <Name>Время возвр АПВ</Name>
+                                   <Description>Время возврата АПВ</Description>
+                                   <ForeignId>3403</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>20.00</Value>
+                                   <MinValue>0.50</MinValue>
+                                   <MaxValue>300.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26154">
+                                   <Name>Тблок ручн. вкл</Name>
+                                   <Description>Время блокиров. АПВ после ручн. включ.</Description>
+                                   <ForeignId>3404</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>20.00</Value>
+                                   <MinValue>0.50</MinValue>
+                                   <MaxValue>300.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26152">
+                                   <Name>ОБНАР Разв Повр</Name>
+                                   <Description>Обнаружение развивающегося повреждения</Description>
+                                   <ForeignId>3406</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25215">с Пуском</EnumValue>
+                                        <EnumValue EnumId="TXT_25216">с Отключением</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25216</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26153">
+                                   <Name>РЕЖ ОБНАР ПОВР</Name>
+                                   <Description>Обнар. развив. повр.(во вр.бесток.паузы)</Description>
+                                   <ForeignId>3407</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25011">блокирует АПВ</EnumValue>
+                                        <EnumValue EnumId="TXT_25166">пуск цикла 3ф АПВ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25011</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26151">
+                                   <Name>Тпуска КОНТРОЛЬ</Name>
+                                   <Description>Время контроля пуска</Description>
+                                   <ForeignId>3408</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.15</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>300.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_20240">
+                                   <Name>Т контр ВЫКЛ</Name>
+                                   <Description>Время контроля выключателя</Description>
+                                   <ForeignId>3409</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>1.00</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>300.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26213">
+                                   <Name>Т УдалВключ</Name>
+                                   <Description>Выдержка отправки удал.командывключения</Description>
+                                   <ForeignId>3410</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>300.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26155">
+                                   <Name>Т паузы ПРОДЛ</Name>
+                                   <Description>Макс. время продления паузы</Description>
+                                   <ForeignId>3411A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>60.00</Value>
+                                   <MinValue>0.50</MinValue>
+                                   <MaxValue>300.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                         </Block>
+                         <Block Id="SP4">
+                              <Name>1 цикл АПВ</Name>
+                              <Description>1 цикл АПВ</Description>
+                              <Parameter Id="PID_26170">
+                                   <Name>1.АПВ:Тп3ф Откл</Name>
+                                   <Description>Время бестоковой паузы при 3ф откл.</Description>
+                                   <ForeignId>3457</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>2.30</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>1800.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26171">
+                                   <Name>1.АПВ:ТпРазвКЗ</Name>
+                                   <Description>Время бестоковой паузы при развивающ КЗ</Description>
+                                   <ForeignId>3458</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>1800.00</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>1800.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26172">
+                                   <Name>1.АПВ:ВЫКЛ?гот</Name>
+                                   <Description>Опрос готовности сил.выкл.перед включ.</Description>
+                                   <ForeignId>3459</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26214">
+                                   <Name>1.АПВ ЗапрСинх</Name>
+                                   <Description>Запрос для пров синхрон после 3ф АПВ</Description>
+                                   <ForeignId>3460</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25</Value>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP2">
+                              <Name>3ф.откл/ПОЛ/УБП</Name>
+                              <Description>3ф.откл/ПОЛ/УБП</Description>
+                              <Parameter Id="PID_26156">
+                                   <Name>АПВ ОТКЛ 3ф</Name>
+                                   <Description>3ф ОТКЛ при блокировании ОАПВ</Description>
+                                   <ForeignId>3430</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26158">
+                                   <Name>ПОЛ или АБП</Name>
+                                   <Description>ПровОбесточЛин или АдаптБестокПаузы</Description>
+                                   <ForeignId>3431</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25171">без</EnumValue>
+                                        <EnumValue EnumId="TXT_25172">Укороченная Бесток. Пауза (УБП)</EnumValue>
+                                        <EnumValue EnumId="TXT_25173">Проверка Обесточенности Линии (ПОЛ)</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25171</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26161">
+                                   <Name>Т Uстаб</Name>
+                                   <Description>Время контроля налич/отсутств напряжения</Description>
+                                   <ForeignId>3438</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.10</Value>
+                                   <MinValue>0.10</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26212">
+                                   <Name>Uс/напр&gt;</Name>
+                                   <Description>Порог напряж.для линии или шин под напр</Description>
+                                   <ForeignId>3440</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>48</Value>
+                                   <MinValue>30</MinValue>
+                                   <MaxValue>90</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26205">
+                                   <Name>U-б/напр&lt;</Name>
+                                   <Description>Порог напряж.для линии или шин б/напр</Description>
+                                   <ForeignId>3441</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>30</Value>
+                                   <MinValue>2</MinValue>
+                                   <MaxValue>70</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter></Block>
+                    </Block>
+               
+                    <Block Id="FG39">
+                         <Name>УРОВ</Name>
+                         <Description>УРОВ</Description>
+                         <Block Id="SP1">
+                              <Name>Общее</Name>
+                              <Description>Общее</Description>
+                              <Parameter Id="PID_25700">
+                                   <Name>Ф-я УРОВ</Name>
+                                   <Description>Ф-я УРОВ является</Description>
+                                   <ForeignId>3901</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_22">ВКЛ</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_22</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26140">
+                                   <Name>I&gt; УРОВ</Name>
+                                   <Description>Порог срабатывания I&gt;</Description>
+                                   <ForeignId>3902</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.05</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>1.20</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26141">
+                                   <Name>IЕ&gt; УРОВ</Name>
+                                   <Description>Порог срабатывания IЕ&gt;</Description>
+                                   <ForeignId>3912</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.05</Value>
+                                   <MinValue>0.05</MinValue>
+                                   <MaxValue>1.20</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_20254">
+                                   <Name>Конт ВЫКЛ Б/К</Name>
+                                   <Description>Контроль выключателя по блок/конт</Description>
+                                   <ForeignId>3909</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26143">
+                                   <Name>Контр Ранж ИП</Name>
+                                   <Description>Контроль достоверн. ранжир. изм.преобраз</Description>
+                                   <ForeignId>3911</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                         </Block>
+                         <Block Id="SP2">
+                              <Name>Ком Откл Т1/Т2</Name>
+                              <Description>Ком Откл Т1/Т2</Description>
+                              <Parameter Id="PID_26131">
+                                   <Name>Т1-1ф</Name>
+                                   <Description>Т1, Выдерж.после 1ф пуска (местн. откл)</Description>
+                                   <ForeignId>3904</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.12</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26132">
+                                   <Name>Т1-3ф</Name>
+                                   <Description>Т1, Выерж.после 3ф пуска (местн. откл)</Description>
+                                   <ForeignId>3905</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.12</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26133">
+                                   <Name>Т2</Name>
+                                   <Description>Выдержка времени Т2</Description>
+                                   <ForeignId>3906</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.30</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP3">
+                              <Name>Неиспр ВЫКЛ</Name>
+                              <Description>Неиспр ВЫКЛ</Description>
+                              <Parameter Id="PID_26134">
+                                   <Name>Т3 Неисп ВЫКЛ</Name>
+                                   <Description>Т3, Выдержка врем при неиспр. ВЫКЛ</Description>
+                                   <ForeignId>3907</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.20</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_26135">
+                                   <Name>ОтклНеиспВыключ</Name>
+                                   <Description>Выбор выдачи ком.откл. при неисп.ВЫКЛ</Description>
+                                   <ForeignId>3908</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                        <EnumValue EnumId="TXT_25190">УРОВ Откл (Т1)</EnumValue>
+                                        <EnumValue EnumId="TXT_25191">УРОВ Откл (Т2)</EnumValue>
+                                        <EnumValue EnumId="TXT_25192">УРОВ Откл (Т1 и Т2)</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25192</Value>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP4">
+                              <Name>Защ Конц Прис</Name>
+                              <Description>Защ Конц Прис</Description>
+                              <Parameter Id="PID_26136">
+                                   <Name>ЗащКЗ мертв зон</Name>
+                                   <Description>Защита от КЗ в "мертвой зоне"</Description>
+                                   <ForeignId>3921</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_22">ВКЛ</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_22</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26137">
+                                   <Name>ВыдВрЗащМертЗон</Name>
+                                   <Description>Выд.врем. защ. от КЗ в "мертвой зоне"</Description>
+                                   <ForeignId>3922</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.30</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP5">
+                              <Name>Расхождение Фаз</Name>
+                              <Description>Расхождение Фаз</Description>
+                              <Parameter Id="PID_26138">
+                                   <Name>Защ. от НПФ</Name>
+                                   <Description>Защита от непереключения фаз</Description>
+                                   <ForeignId>3931</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_22">ВКЛ</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_23</Value>
+                              </Parameter>
+                              <Parameter Id="PID_26139">
+                                   <Name>ВыдВрем ЗНПФ</Name>
+                                   <Description>Выд.врем. защ. от непереключения фаз</Description>
+                                   <ForeignId>3932</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>INF</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP6">
+                              <Name>ЗащДугПерекр</Name>
+                              <Description>ЗащДугПерекр</Description>
+                              <Parameter Id="PID_26142">
+                                   <Name>ЗащДугПерекр</Name>
+                                   <Description>Защита от дуговых перекрытий</Description>
+                                   <ForeignId>3940</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_22">ВКЛ</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_23</Value>
+                              </Parameter></Block>
+                    </Block>
+               
+                    <Block Id="FG40">
+                         <Name>Контроль Измер.</Name>
+                         <Description>Контроль измеряемых величин</Description>
+                         <Block Id="SP1">
+                              <Name/>
+                              <Description/>
+                              <Parameter Id="PID_25806">
+                                   <Name>Контр БНН</Name>
+                                   <Description>Контроль БНН</Description>
+                                   <ForeignId>2915</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25230">с контролем тока</EnumValue>
+                                        <EnumValue EnumId="TXT_25231">с контролем тока и бл-контактов сил.вык.</EnumValue>
+                                        <EnumValue EnumId="TXT_23">ОТКЛ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25230</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25805">
+                                   <Name>Т БНН</Name>
+                                   <Description>Выдержка Врем Контроля БНН</Description>
+                                   <ForeignId>2916A</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>9.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>30.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25803">
+                                   <Name>БНН U&lt; (3ф)</Name>
+                                   <Description>Порог напряжения U&lt; (3ф) для БНН</Description>
+                                   <ForeignId>2917</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>29</Value>
+                                   <MinValue>2</MinValue>
+                                   <MaxValue>100</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                         </Block></Block>
+               </Block>
+               <Block Id="PG3">
+                    <Name>Измерительный преобразователь</Name>
+                    <Description/>
+                    <Block Id="FG41">
+                         <Name>Изм U_1</Name>
+                         <Description>Измерение U</Description>
+                         <Block Id="SP0">
+                              <Name>Общее</Name>
+                              <Description>Общее</Description>
+                              <Parameter Id="PID_27000">
+                                   <Name>ТН ВторНапр</Name>
+                                   <Description>Номинальное значение вторичного напряж.</Description>
+                                   <ForeignId>0x2000029E6978</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>100.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>200.00</MaxValue>
+                                   <Unit DecimalPlaces="2">В</Unit>
+                              </Parameter>
+                         
+                         </Block></Block>
+                    <Block Id="FG43">
+                         <Name>Изм 1ф_1</Name>
+                         <Description>Однофазное измерение, группа измерений 1</Description>
+                         <Block Id="SP0">
+                              <Name>Общее</Name>
+                              <Description>Общее</Description>
+                              <Parameter Id="PID_27000">
+                                   <Name>ТН ВторНапр</Name>
+                                   <Description>Номинальное значение вторичного напряж.</Description>
+                                   <ForeignId>0x2000029F6978</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>100.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>200.00</MaxValue>
+                                   <Unit DecimalPlaces="2">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27001">
+                                   <Name>ТТ ЗначВторТока</Name>
+                                   <Description>Номинальное значение вторичного тока</Description>
+                                   <ForeignId>0x2000029F6979</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>1.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>5.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                         </Block></Block>
+               
+                    <Block Id="FG46">
+                         <Name>Изм 3ф_1</Name>
+                         <Description>Трехфазное измерение, группа измерений 1</Description>
+                         <Block Id="SP0">
+                              <Name>Общее</Name>
+                              <Description>Общее</Description>
+                              <Parameter Id="PID_27000">
+                                   <Name>ТН ВторНапр</Name>
+                                   <Description>Номинальное значение вторичного напряж.</Description>
+                                   <ForeignId>0x200002A26978</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>100.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>200.00</MaxValue>
+                                   <Unit DecimalPlaces="2">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27001">
+                                   <Name>ТТ ЗначВторТока</Name>
+                                   <Description>Номинальное значение вторичного тока</Description>
+                                   <ForeignId>0x200002A26979</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>1.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>5.00</MaxValue>
+                                   <Unit DecimalPlaces="2">А</Unit>
+                              </Parameter>
+                         </Block></Block>
+               </Block>
+               <Block Id="PG4">
+                    <Name>Синхронизация</Name>
+                    <Description/>
+                    <Block Id="FG56">
+                         <Name>СИНХР функция 6</Name>
+                         <Description>СИНХР. Группа функций 6</Description>
+                         <Block Id="SP0">
+                              <Name>Параметры ЭС</Name>
+                              <Description>Параметры ЭС</Description>
+                              <Parameter Id="PID_25763">
+                                   <Name>ВЫКЛ Собст Врем</Name>
+                                   <Description>Собственное время включения ВЫКЛ</Description>
+                                   <ForeignId>0x2000041064A3</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.06</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>0.60</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27010">
+                                   <Name>КоэффБал U1/U2</Name>
+                                   <Description>Коэффициент баланса U1/U2</Description>
+                                   <ForeignId>0x200004106982</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>1.00</Value>
+                                   <MinValue>0.80</MinValue>
+                                   <MaxValue>1.20</MaxValue>
+                                   <Unit DecimalPlaces="2"/>
+                              </Parameter>
+                              <Parameter Id="PID_27011">
+                                   <Name>Угол U1-U2</Name>
+                                   <Description>Задание угла U1-U2</Description>
+                                   <ForeignId>0x200004106983</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>330</Value>
+                                   <MinValue>0</MinValue>
+                                   <MaxValue>360</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27012">
+                                   <Name>ТН1 ВторНапр</Name>
+                                   <Description>Номинальное значение вторич напряжения</Description>
+                                   <ForeignId>0x200004106984</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>100.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>170.00</MaxValue>
+                                   <Unit DecimalPlaces="2">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27013">
+                                   <Name>ТН2 ВторНапр</Name>
+                                   <Description>Номинальное значение вторич напряжения</Description>
+                                   <ForeignId>0x200004106985</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>100.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>170.00</MaxValue>
+                                   <Unit DecimalPlaces="2">В</Unit>
+                              </Parameter>
+                         </Block>
+                         <Block Id="SP1">
+                              <Name>Общее</Name>
+                              <Description>Общее</Description>
+                              <Parameter Id="PID_27014">
+                                   <Name>Uмин</Name>
+                                   <Description>Мин. напряжение для синхронизации</Description>
+                                   <ForeignId>0x200004106986</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>60</Value>
+                                   <MinValue>20</MinValue>
+                                   <MaxValue>125</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27015">
+                                   <Name>Uмакс</Name>
+                                   <Description>Макс. напряжение для синхронизации</Description>
+                                   <ForeignId>0x200004106987</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>120</Value>
+                                   <MinValue>20</MinValue>
+                                   <MaxValue>140</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27016">
+                                   <Name>Uобест</Name>
+                                   <Description>Порог напр. обесточен. линии/шин</Description>
+                                   <ForeignId>0x200004106988</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>50</Value>
+                                   <MinValue>1</MinValue>
+                                   <MaxValue>60</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27017">
+                                   <Name>Синхр.U1&gt;U2&lt;</Name>
+                                   <Description>Синхронизация по условию U1&gt; и U2&lt;</Description>
+                                   <ForeignId>0x200004106989</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_27018">
+                                   <Name>Синхр.U1&lt;U2&gt;</Name>
+                                   <Description>Синхронизация по условию U1&lt; и U2&gt;</Description>
+                                   <ForeignId>0x20000410698A</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_27019">
+                                   <Name>Синхр.U1&lt;U2&lt;</Name>
+                                   <Description>Синхронизация по условию U1&lt; и U2&lt;</Description>
+                                   <ForeignId>0x20000410698B</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25767">
+                                   <Name>Т синхр длит</Name>
+                                   <Description>Макс. время процесса синхронизации</Description>
+                                   <ForeignId>0x2000041064A7</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>60.00</Value>
+                                   <MinValue>1.00</MinValue>
+                                   <MaxValue>600.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25777">
+                                   <Name>fмин</Name>
+                                   <Description>Минимальная частота</Description>
+                                   <ForeignId>0x2000041064B1</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>97</Value>
+                                   <MinValue>95</MinValue>
+                                   <MaxValue>105</MaxValue>
+                                   <Unit DecimalPlaces="0">%</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25778">
+                                   <Name>fмакс</Name>
+                                   <Description>Максимальная частота</Description>
+                                   <ForeignId>0x2000041064B2</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>101</Value>
+                                   <MinValue>95</MinValue>
+                                   <MaxValue>105</MaxValue>
+                                   <Unit DecimalPlaces="0">%</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP2">
+                              <Name>АсинхрУсловия</Name>
+                              <Description>АсинхрУсловия</Description>
+                              <Parameter Id="PID_27024">
+                                   <Name>РазнU АсинхрВкл</Name>
+                                   <Description>Макс.разница напряжений для асинхр.вкл.</Description>
+                                   <ForeignId>0x200004106990</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>22.7</Value>
+                                   <MinValue>0.5</MinValue>
+                                   <MaxValue>40.0</MaxValue>
+                                   <Unit DecimalPlaces="1">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27021">
+                                   <Name>Разн f СинхрВкл</Name>
+                                   <Description>Макс.разница частот для синхр.включения</Description>
+                                   <ForeignId>0x20000410698D</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.40</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>2.00</MaxValue>
+                                   <Unit DecimalPlaces="2">Гц</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP3">
+                              <Name>СинхрУсловия</Name>
+                              <Description>СинхрУсловия</Description>
+                              <Parameter Id="PID_27023">
+                                   <Name>f синхрон</Name>
+                                   <Description>Порог.знач. f для синхр./асинхр. включ.</Description>
+                                   <ForeignId>0x20000410698F</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>40</Value>
+                                   <MinValue>10</MinValue>
+                                   <MaxValue>40</MaxValue>
+                                   <Unit DecimalPlaces="0">мГц</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27020">
+                                   <Name>РазнU СинхрВкл</Name>
+                                   <Description>Макс.разница напряжений для синхр.включ.</Description>
+                                   <ForeignId>0x20000410698C</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>22.7</Value>
+                                   <MinValue>0.5</MinValue>
+                                   <MaxValue>40.0</MaxValue>
+                                   <Unit DecimalPlaces="1">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27022">
+                                   <Name>Разн ? СинхрВкл</Name>
+                                   <Description>Макс.разница углов для синхр.включения</Description>
+                                   <ForeignId>0x20000410698E</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>40</Value>
+                                   <MinValue>2</MinValue>
+                                   <MaxValue>90</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27025">
+                                   <Name>Т синхрон</Name>
+                                   <Description>Миним.время наличия усл.синхронизма</Description>
+                                   <ForeignId>0x200004106991</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.30</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>60.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                         </Block>
+                    </Block>
+                    <Block Id="FG57">
+                         <Name>СИНХР функция 7</Name>
+                         <Description>СИНХР. Группа функций 7</Description>
+                         <Block Id="SP0">
+                              <Name>Параметры ЭС</Name>
+                              <Description>Параметры ЭС</Description>
+                              <Parameter Id="PID_25763">
+                                   <Name>ВЫКЛ Собст Врем</Name>
+                                   <Description>Собственное время включения ВЫКЛ</Description>
+                                   <ForeignId>0x2000041164A3</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.06</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>0.60</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27010">
+                                   <Name>КоэффБал U1/U2</Name>
+                                   <Description>Коэффициент баланса U1/U2</Description>
+                                   <ForeignId>0x200004116982</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>1.00</Value>
+                                   <MinValue>0.80</MinValue>
+                                   <MaxValue>1.20</MaxValue>
+                                   <Unit DecimalPlaces="2"/>
+                              </Parameter>
+                              <Parameter Id="PID_27011">
+                                   <Name>Угол U1-U2</Name>
+                                   <Description>Задание угла U1-U2</Description>
+                                   <ForeignId>0x200004116983</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>330</Value>
+                                   <MinValue>0</MinValue>
+                                   <MaxValue>360</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27012">
+                                   <Name>ТН1 ВторНапр</Name>
+                                   <Description>Номинальное значение вторич напряжения</Description>
+                                   <ForeignId>0x200004116984</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>100.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>170.00</MaxValue>
+                                   <Unit DecimalPlaces="2">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27013">
+                                   <Name>ТН2 ВторНапр</Name>
+                                   <Description>Номинальное значение вторич напряжения</Description>
+                                   <ForeignId>0x200004116985</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>100.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>170.00</MaxValue>
+                                   <Unit DecimalPlaces="2">В</Unit>
+                              </Parameter>
+                         </Block>
+                         <Block Id="SP1">
+                              <Name>Общее</Name>
+                              <Description>Общее</Description>
+                              <Parameter Id="PID_27014">
+                                   <Name>Uмин</Name>
+                                   <Description>Мин. напряжение для синхронизации</Description>
+                                   <ForeignId>0x200004116986</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>60</Value>
+                                   <MinValue>20</MinValue>
+                                   <MaxValue>125</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27015">
+                                   <Name>Uмакс</Name>
+                                   <Description>Макс. напряжение для синхронизации</Description>
+                                   <ForeignId>0x200004116987</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>120</Value>
+                                   <MinValue>20</MinValue>
+                                   <MaxValue>140</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27016">
+                                   <Name>Uобест</Name>
+                                   <Description>Порог напр. обесточен. линии/шин</Description>
+                                   <ForeignId>0x200004116988</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>50</Value>
+                                   <MinValue>1</MinValue>
+                                   <MaxValue>60</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27017">
+                                   <Name>Синхр.U1&gt;U2&lt;</Name>
+                                   <Description>Синхронизация по условию U1&gt; и U2&lt;</Description>
+                                   <ForeignId>0x200004116989</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_27018">
+                                   <Name>Синхр.U1&lt;U2&gt;</Name>
+                                   <Description>Синхронизация по условию U1&lt; и U2&gt;</Description>
+                                   <ForeignId>0x20000411698A</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_27019">
+                                   <Name>Синхр.U1&lt;U2&lt;</Name>
+                                   <Description>Синхронизация по условию U1&lt; и U2&lt;</Description>
+                                   <ForeignId>0x20000411698B</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_24</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25767">
+                                   <Name>Т синхр длит</Name>
+                                   <Description>Макс. время процесса синхронизации</Description>
+                                   <ForeignId>0x2000041164A7</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>60.00</Value>
+                                   <MinValue>1.00</MinValue>
+                                   <MaxValue>600.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25777">
+                                   <Name>fмин</Name>
+                                   <Description>Минимальная частота</Description>
+                                   <ForeignId>0x2000041164B1</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>97</Value>
+                                   <MinValue>95</MinValue>
+                                   <MaxValue>105</MaxValue>
+                                   <Unit DecimalPlaces="0">%</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25778">
+                                   <Name>fмакс</Name>
+                                   <Description>Максимальная частота</Description>
+                                   <ForeignId>0x2000041164B2</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>101</Value>
+                                   <MinValue>95</MinValue>
+                                   <MaxValue>105</MaxValue>
+                                   <Unit DecimalPlaces="0">%</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP2">
+                              <Name>АсинхрУсловия</Name>
+                              <Description>АсинхрУсловия</Description>
+                              <Parameter Id="PID_27024">
+                                   <Name>РазнU АсинхрВкл</Name>
+                                   <Description>Макс.разница напряжений для асинхр.вкл.</Description>
+                                   <ForeignId>0x200004116990</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>22.7</Value>
+                                   <MinValue>0.5</MinValue>
+                                   <MaxValue>40.0</MaxValue>
+                                   <Unit DecimalPlaces="1">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27021">
+                                   <Name>Разн f СинхрВкл</Name>
+                                   <Description>Макс.разница частот для синхр.включения</Description>
+                                   <ForeignId>0x20000411698D</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.40</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>2.00</MaxValue>
+                                   <Unit DecimalPlaces="2">Гц</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP3">
+                              <Name>СинхрУсловия</Name>
+                              <Description>СинхрУсловия</Description>
+                              <Parameter Id="PID_27023">
+                                   <Name>f синхрон</Name>
+                                   <Description>Порог.знач. f для синхр./асинхр. включ.</Description>
+                                   <ForeignId>0x20000411698F</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>40</Value>
+                                   <MinValue>10</MinValue>
+                                   <MaxValue>40</MaxValue>
+                                   <Unit DecimalPlaces="0">мГц</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27020">
+                                   <Name>РазнU СинхрВкл</Name>
+                                   <Description>Макс.разница напряжений для синхр.включ.</Description>
+                                   <ForeignId>0x20000411698C</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>22.7</Value>
+                                   <MinValue>0.5</MinValue>
+                                   <MaxValue>40.0</MaxValue>
+                                   <Unit DecimalPlaces="1">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27022">
+                                   <Name>Разн ? СинхрВкл</Name>
+                                   <Description>Макс.разница углов для синхр.включения</Description>
+                                   <ForeignId>0x20000411698E</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>40</Value>
+                                   <MinValue>2</MinValue>
+                                   <MaxValue>90</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27025">
+                                   <Name>Т синхрон</Name>
+                                   <Description>Миним.время наличия усл.синхронизма</Description>
+                                   <ForeignId>0x200004116991</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.30</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>60.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter></Block>
+                    </Block>
+               
+                    <Block Id="FG58">
+                         <Name>СИНХР функция 8</Name>
+                         <Description>СИНХР. Группа функций 8</Description>
+                         <Block Id="SP0">
+                              <Name>Параметры ЭС</Name>
+                              <Description>Параметры ЭС</Description>
+                              <Parameter Id="PID_25763">
+                                   <Name>ВЫКЛ Собст Врем</Name>
+                                   <Description>Собственное время включения ВЫКЛ</Description>
+                                   <ForeignId>0x2000041264A3</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.06</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>0.60</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27010">
+                                   <Name>КоэффБал U1/U2</Name>
+                                   <Description>Коэффициент баланса U1/U2</Description>
+                                   <ForeignId>0x200004126982</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>1.00</Value>
+                                   <MinValue>0.80</MinValue>
+                                   <MaxValue>1.20</MaxValue>
+                                   <Unit DecimalPlaces="2"/>
+                              </Parameter>
+                              <Parameter Id="PID_27011">
+                                   <Name>Угол U1-U2</Name>
+                                   <Description>Задание угла U1-U2</Description>
+                                   <ForeignId>0x200004126983</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>330</Value>
+                                   <MinValue>0</MinValue>
+                                   <MaxValue>360</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27012">
+                                   <Name>ТН1 ВторНапр</Name>
+                                   <Description>Номинальное значение вторич напряжения</Description>
+                                   <ForeignId>0x200004126984</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>100.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>170.00</MaxValue>
+                                   <Unit DecimalPlaces="2">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27013">
+                                   <Name>ТН2 ВторНапр</Name>
+                                   <Description>Номинальное значение вторич напряжения</Description>
+                                   <ForeignId>0x200004126985</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>100.00</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>170.00</MaxValue>
+                                   <Unit DecimalPlaces="2">В</Unit>
+                              </Parameter>
+                         </Block>
+                         <Block Id="SP1">
+                              <Name>Общее</Name>
+                              <Description>Общее</Description>
+                              <Parameter Id="PID_27014">
+                                   <Name>Uмин</Name>
+                                   <Description>Мин. напряжение для синхронизации</Description>
+                                   <ForeignId>0x200004126986</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>60</Value>
+                                   <MinValue>20</MinValue>
+                                   <MaxValue>125</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27015">
+                                   <Name>Uмакс</Name>
+                                   <Description>Макс. напряжение для синхронизации</Description>
+                                   <ForeignId>0x200004126987</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>120</Value>
+                                   <MinValue>20</MinValue>
+                                   <MaxValue>140</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27016">
+                                   <Name>Uобест</Name>
+                                   <Description>Порог напр. обесточен. линии/шин</Description>
+                                   <ForeignId>0x200004126988</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>50</Value>
+                                   <MinValue>1</MinValue>
+                                   <MaxValue>60</MaxValue>
+                                   <Unit DecimalPlaces="0">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27017">
+                                   <Name>Синхр.U1&gt;U2&lt;</Name>
+                                   <Description>Синхронизация по условию U1&gt; и U2&lt;</Description>
+                                   <ForeignId>0x200004126989</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25</Value>
+                              </Parameter>
+                              <Parameter Id="PID_27018">
+                                   <Name>Синхр.U1&lt;U2&gt;</Name>
+                                   <Description>Синхронизация по условию U1&lt; и U2&gt;</Description>
+                                   <ForeignId>0x20000412698A</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25</Value>
+                              </Parameter>
+                              <Parameter Id="PID_27019">
+                                   <Name>Синхр.U1&lt;U2&lt;</Name>
+                                   <Description>Синхронизация по условию U1&lt; и U2&lt;</Description>
+                                   <ForeignId>0x20000412698B</ForeignId>
+                                   <DataType>Enumeration</DataType>
+                                   <EnumList>
+                                        <EnumValue EnumId="TXT_25">ДА</EnumValue>
+                                        <EnumValue EnumId="TXT_24">НЕТ</EnumValue>
+                                   </EnumList>
+                                   <Value>TXT_25</Value>
+                              </Parameter>
+                              <Parameter Id="PID_25767">
+                                   <Name>Т синхр длит</Name>
+                                   <Description>Макс. время процесса синхронизации</Description>
+                                   <ForeignId>0x2000041264A7</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>60.00</Value>
+                                   <MinValue>1.00</MinValue>
+                                   <MaxValue>600.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25777">
+                                   <Name>fмин</Name>
+                                   <Description>Минимальная частота</Description>
+                                   <ForeignId>0x2000041264B1</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>97</Value>
+                                   <MinValue>95</MinValue>
+                                   <MaxValue>105</MaxValue>
+                                   <Unit DecimalPlaces="0">%</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_25778">
+                                   <Name>fмакс</Name>
+                                   <Description>Максимальная частота</Description>
+                                   <ForeignId>0x2000041264B2</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>101</Value>
+                                   <MinValue>95</MinValue>
+                                   <MaxValue>105</MaxValue>
+                                   <Unit DecimalPlaces="0">%</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP2">
+                              <Name>АсинхрУсловия</Name>
+                              <Description>АсинхрУсловия</Description>
+                              <Parameter Id="PID_27024">
+                                   <Name>РазнU АсинхрВкл</Name>
+                                   <Description>Макс.разница напряжений для асинхр.вкл.</Description>
+                                   <ForeignId>0x200004126990</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>22.7</Value>
+                                   <MinValue>0.5</MinValue>
+                                   <MaxValue>40.0</MaxValue>
+                                   <Unit DecimalPlaces="1">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27021">
+                                   <Name>Разн f СинхрВкл</Name>
+                                   <Description>Макс.разница частот для синхр.включения</Description>
+                                   <ForeignId>0x20000412698D</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.40</Value>
+                                   <MinValue>0.01</MinValue>
+                                   <MaxValue>2.00</MaxValue>
+                                   <Unit DecimalPlaces="2">Гц</Unit>
+                              </Parameter></Block>
+                    
+                         <Block Id="SP3">
+                              <Name>СинхрУсловия</Name>
+                              <Description>СинхрУсловия</Description>
+                              <Parameter Id="PID_27023">
+                                   <Name>f синхрон</Name>
+                                   <Description>Порог.знач. f для синхр./асинхр. включ.</Description>
+                                   <ForeignId>0x20000412698F</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>40</Value>
+                                   <MinValue>10</MinValue>
+                                   <MaxValue>40</MaxValue>
+                                   <Unit DecimalPlaces="0">мГц</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27020">
+                                   <Name>РазнU СинхрВкл</Name>
+                                   <Description>Макс.разница напряжений для синхр.включ.</Description>
+                                   <ForeignId>0x20000412698C</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>22.7</Value>
+                                   <MinValue>0.5</MinValue>
+                                   <MaxValue>40.0</MaxValue>
+                                   <Unit DecimalPlaces="1">В</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27022">
+                                   <Name>Разн ? СинхрВкл</Name>
+                                   <Description>Макс.разница углов для синхр.включения</Description>
+                                   <ForeignId>0x20000412698E</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>40</Value>
+                                   <MinValue>2</MinValue>
+                                   <MaxValue>90</MaxValue>
+                                   <Unit DecimalPlaces="0">°</Unit>
+                              </Parameter>
+                              <Parameter Id="PID_27025">
+                                   <Name>Т синхрон</Name>
+                                   <Description>Миним.время наличия усл.синхронизма</Description>
+                                   <ForeignId>0x200004126991</ForeignId>
+                                   <DataType>Real</DataType>
+                                   <Value>0.30</Value>
+                                   <MinValue>0.00</MinValue>
+                                   <MaxValue>60.00</MaxValue>
+                                   <Unit DecimalPlaces="2">сек</Unit>
+                              </Parameter>
+                         </Block>
+                    </Block>
+               </Block></Block>
+          <Block Id="ADD_PARAM">
+               <Name>Additional Information</Name>
+               <Description/>
+               <Block Id="GENERALINFO">
+                    <Name>General Information</Name>
+                    <Description/>
+                    <Block Id="GENERAL_INFO1">
+                         <Name>General</Name>
+                         <Description>General Information</Description>
+                         <Parameter Id="MANUFACTURER">
+                              <Name>Manufacturer</Name>
+                              <Description>Manufacturer</Description>
+                              <DataType>String</DataType>
+                              <Value>SIEMENS AG</Value>
+                         </Parameter>
+                         <Parameter Id="DEVICE_MODEL">
+                              <Name>Device Model</Name>
+                              <Description>Device Model</Description>
+                              <DataType>String</DataType>
+                              <Value>6MD664</Value>
+                         </Parameter>
+                         <Parameter Id="SERIAL_NUMBER">
+                              <Name>Serial Number</Name>
+                              <Description>Serial Number</Description>
+                              <DataType>String</DataType>
+                              <Value>V04.70.02</Value>
+                         </Parameter>
+                         <Parameter Id="HWREVISION">
+                              <Name>MLFB</Name>
+                              <Description>MLFB DIGSI</Description>
+                              <DataType>String</DataType>
+                              <Value>6MD66415EB250AA3----------------</Value>
+                         </Parameter>
+                    
+                    
+                    </Block></Block></Block>
+     </CUSTOM>
+     <RIO Type="RIOBlock" BlockType="RIO">
+          <Name>RIO</Name>
+          <Description/>
+          <DEVICE Type="RIOBlock" BlockType="DEVICE">
+               <NAMEPLATE Type="RIOBlock" BlockType="DEVICE_NAMEPLATE">
+                    <DEVICE_MODEL Type="Parameter">
+                         <Value/>
+                    </DEVICE_MODEL>
+                    <MANUFACTURER Type="Parameter">
+                         <Value/>
+                    </MANUFACTURER>
+                    <DEVICE_TYPE Type="Parameter">
+                         <Value/>
+                    </DEVICE_TYPE>
+                    <SERIALNR Type="Parameter">
+                         <Value/>
+                    </SERIALNR>
+                    <ADDITIONAL_INFO2 Type="Parameter">
+                         <Value/>
+                    </ADDITIONAL_INFO2>
+               </NAMEPLATE>
+               <LOCATION Type="RIOBlock" BlockType="DEVICE_LOCATION">
+                    <DEVICE_ADDRESS Type="Parameter">
+                         <Value/>
+                    </DEVICE_ADDRESS>
+                    <SUBSTATION Type="Parameter">
+                         <Value/>
+                    </SUBSTATION>
+                    <SUBSTATION_ADDRESS Type="Parameter">
+                         <Value/>
+                    </SUBSTATION_ADDRESS>
+                    <BAY Type="Parameter">
+                         <Value/>
+                    </BAY>
+                    <BAY_ADDRESS Type="Parameter">
+                         <Value/>
+                    </BAY_ADDRESS>
+                    <PROTECTED_OBJECT_NAME Type="Parameter">
+                         <Value/>
+                    </PROTECTED_OBJECT_NAME>
+               </LOCATION>
+               <NOMINALVALUES Type="RIOBlock" BlockType="DEVICE_NOMINALVALUES">
+                    <PHASES Type="Parameter">
+                         <Value>3</Value>
+                    </PHASES>
+                    <FNOM Type="Parameter">
+                         <Value>50</Value>
+                    </FNOM>
+                    <VNOM Type="Parameter">
+                         <Value>100</Value>
+                    </VNOM>
+                    <VPRIM_LL Type="Parameter">
+                         <Value>110000</Value>
+                    </VPRIM_LL>
+                    <INOM Type="Parameter">
+                         <Value>1</Value>
+                    </INOM>
+                    <IPRIM Type="Parameter">
+                         <Value>1000</Value>
+                    </IPRIM>
+               </NOMINALVALUES>
+               <RESIDUALFACTORS Type="RIOBlock" BlockType="DEVICE_RESIDUALFACTORS">
+                    <VLNVN Type="Parameter">
+                         <Value>1.732</Value>
+                    </VLNVN>
+                    <ININOM Type="Parameter">
+                         <Value>1</Value>
+                    </ININOM>
+               </RESIDUALFACTORS>
+               <LIMITS Type="RIOBlock" BlockType="DEVICE_LIMITS">
+                    <VMAX_LL Type="Parameter">
+                         <Value>200</Value>
+                    </VMAX_LL>
+                    <IMAX Type="Parameter">
+                         <Value>50</Value>
+                    </IMAX>
+               </LIMITS>
+               <MISC Type="RIOBlock" BlockType="DEVICE_MISC">
+                    <DEBOUNCETIME Type="Parameter">
+                         <Value>0.003</Value>
+                    </DEBOUNCETIME>
+                    <DEGLITCHTIME Type="Parameter">
+                         <Value>0</Value>
+                    </DEGLITCHTIME>
+                    <OVERLOADSUPTIME Type="Parameter">
+                         <Value>0.05</Value>
+                    </OVERLOADSUPTIME>
+               </MISC>
+          </DEVICE>
+     </RIO>
+</XRio>
